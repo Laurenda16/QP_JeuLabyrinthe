@@ -1,8 +1,9 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 #include <memory>
+#include <vector>
 
-#include "point.h"
+#include "terrain.h"
 #include "observateurRobot.h"
 
 
@@ -11,21 +12,20 @@ class robot
 {
     public:
         robot();
-        bool obstacleEstDetecte() const;
+
         int avanceUneCase();
         void tounerAGauche() ;
         void tounerADroite() ;
+          bool detecterObstacle() const;
         void notifierObservation() const ;
-        void enregistrerObservateur() ;
+        void enregistrerObservateur(const observateurRobot& ob) ;
 
-///cardinal direction
-  enum { east=0, north=90, west=180, south=270 };
 
 
     private:
-       geom::point d_pos;
-     std::vector<std::unique_ptr<observateurRobot> d_observateurs;
-       Direction d_direction;
+       position d_pos;
+     std::vector<observateurRobot> d_observateurs;
+     char d_direction; //N,E,S,W
 };
 
 #endif // ROBOT_H
