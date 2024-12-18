@@ -3,7 +3,7 @@
 #include<iostream>
 #include<vector>
 struct  position{int x, y;
-   bool operator==(const position& p) const{return p.x == x && p.y == y;}
+   bool operator==(const position& p) const {return p.x == x && p.y == y;}
 };
 using namespace std;
 class terrain
