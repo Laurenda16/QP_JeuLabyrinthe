@@ -1,6 +1,6 @@
 #include "terrain.h"
 
-terrain::terrain(int lignes, int colonnes, const position& caseDepart, const position& caseArrivee): d_caseDepart{caseDepart},
+terrain::terrain(int lignes, int colonnes, const position& caseDepart, const position& caseArrivee): d_lignes{lignes}, d_colonnes{colonnes}, d_caseDepart{caseDepart},
 d_caseArrivee{caseArrivee}{initialiseTableau();}
 position terrain::caseDepart() const{return d_caseDepart;}
 position terrain::caseArrivee() const{return d_caseArrivee ;}
