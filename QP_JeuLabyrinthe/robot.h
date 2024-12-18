@@ -24,8 +24,8 @@ class robot
 
     private:
        geom::point d_pos;
-     //std::vector<std::unique_ptr<observateurRobot> d_observateurs;
-       // direction
+     std::vector<std::unique_ptr<observateurRobot> d_observateurs;
+       Direction d_direction;
 };
 
 #endif // ROBOT_H
