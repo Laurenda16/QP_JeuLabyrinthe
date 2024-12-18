@@ -11,9 +11,11 @@
 class robot
 {
     public:
-        robot();
+        robot(const position& pos, char direction);
+         position positionXY() const;
+        char direction() const;
 
-        int avanceUneCase();
+        void avanceUneCase();
         void tounerAGauche() ;
         void tounerADroite() ;
           bool detecterObstacle() const;
