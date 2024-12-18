@@ -13,8 +13,9 @@ public:
 class observateurRobot :public observateur
 {
     public:
-        observateurRobot();
+
         virtual ~observateurRobot() override;
+        virtual void notifier(int x, int y, char direction)=0;
         int nombreDeplacement() const;
 
 

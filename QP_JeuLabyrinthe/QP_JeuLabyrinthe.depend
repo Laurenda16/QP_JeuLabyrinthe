@@ -2,10 +2,12 @@
 1732358084 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\main.cpp
 	<iostream>
 
-1734547103 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.cpp
+1734547530 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.cpp
+	<istream>
+	<ostream>
 	"observateurRobot.h"
 
-1734546092 c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.h
+1734547318 c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.h
 
 1734547063 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.cpp
 	"terrain.h"
