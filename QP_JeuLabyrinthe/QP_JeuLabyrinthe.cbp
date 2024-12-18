@@ -36,8 +36,6 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="observateurRobot.cpp" />
 		<Unit filename="observateurRobot.h" />
-		<Unit filename="point.cpp" />
-		<Unit filename="point.h" />
 		<Unit filename="robot.cpp" />
 		<Unit filename="robot.h" />
 		<Unit filename="terrain.cpp" />

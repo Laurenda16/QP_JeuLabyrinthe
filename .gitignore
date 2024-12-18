@@ -1,0 +1,8 @@
+# Ignore les fichiers binaires, objets, et autres fichiers générés
+*.exe
+*.o
+*.obj
+*.depend
+*.layout
+bin/
+obj/
