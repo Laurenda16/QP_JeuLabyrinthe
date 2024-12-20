@@ -1,25 +1,6 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
-<<<<<<< HEAD
 
-struct position
-{
-
-int x;
-int y;
-};
-class terrain
-{
-    public:
-        terrain();
-
-
-    protected:
-
-    private:
-
-    };
-=======
 #include<iostream>
 #include<vector>
 struct  position{int x, y;
@@ -32,17 +13,18 @@ class terrain
            terrain(int lignes, int colonnes, const position& caseDepart, const position& caseArrivee);
            position caseDepart() const;
            position caseArrivee() const;
+           bool estPositionValide(const position& pos) const;
+           bool sontPositionsDepartArriveeValides() const;
            void initialiseTableau();
            void imprimeSur(const string& nomFichier) const;
            void litDepuis(const string& nomFichier);
 
-    private:
-            vector<vector<char>> d_tableau;
-            int d_lignes, d_colonnes; // le nombre de lignes et de colonnes du terrain
-            position d_caseDepart, d_caseArrivee;
-            bool estPositionValide(const position& pos) const;
-            bool sontPositionsDepartArriveeValides() const;
+ private:
+        vector<vector<char>> d_tableau;
+        int d_lignes, d_colonnes;//le nombre de lignes et le nombre de colonnes du terrain
+        position d_caseDepart, d_caseArrivee;
+
 };
->>>>>>> branchAbdou
+
 
 #endif // TERRAIN_H

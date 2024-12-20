@@ -1,9 +1,5 @@
 #include <iostream>
-
-
-
 using namespace std;
-
 int main()
 {
     //mis a jour

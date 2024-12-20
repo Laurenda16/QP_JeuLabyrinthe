@@ -5,20 +5,16 @@
 
 #include "terrain.h"
 #include "observateurRobot.h"
-
-
-
 class robot
 {
     public:
         robot(const position& pos, char direction);
-         position positionXY() const;
+        position positionXY() const;
         char direction() const;
-
         void avanceUneCase();
         void tounerAGauche() ;
         void tounerADroite() ;
-          bool detecterObstacle() const;
+        bool detecterObstacle() const;
         void notifierObservation() const ;
         void enregistrerObservateur(const observateurRobot& ob) ;
 
@@ -29,7 +25,5 @@ class robot
      std::vector<observateurRobot> d_observateurs;
      char d_direction; //N,E,S,W
 };
-
 #endif // ROBOT_H
-
 
