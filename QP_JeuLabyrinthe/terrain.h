@@ -1,25 +1,6 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
-<<<<<<< HEAD
 
-struct position
-{
-
-int x;
-int y;
-};
-class terrain
-{
-    public:
-        terrain();
-
-
-    protected:
-
-    private:
-
-    };
-=======
 #include<iostream>
 #include<vector>
 struct  position{int x, y;
@@ -43,6 +24,6 @@ class terrain
             bool estPositionValide(const position& pos) const;
             bool sontPositionsDepartArriveeValides() const;
 };
->>>>>>> branchAbdou
+
 
 #endif // TERRAIN_H

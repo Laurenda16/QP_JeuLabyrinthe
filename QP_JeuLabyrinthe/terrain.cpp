@@ -1,8 +1,6 @@
 #include "terrain.h"
 
-<<<<<<< HEAD
 
-=======
 terrain::terrain(int lignes, int colonnes, const position& caseDepart, const position& caseArrivee): d_lignes{lignes}, d_colonnes{colonnes}, d_caseDepart{caseDepart},
 d_caseArrivee{caseArrivee}{initialiseTableau();}
 position terrain::caseDepart() const{return d_caseDepart;}
@@ -30,4 +28,4 @@ void terrain::initialiseTableau() {
     }
 
 }
->>>>>>> branchAbdou
+
