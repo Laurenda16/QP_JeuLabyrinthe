@@ -12,7 +12,6 @@ bool terrain::sontPositionsDepartArriveeValides() const
 {
   return estPositionValide(d_caseDepart) && estPositionValide(d_caseArrivee);
 }
-/**
 void terrain::initialiseTableau() {
 
     d_tableau = vector<vector<char>>(d_lignes, vector<char>(d_colonnes, 'X'));
@@ -26,4 +25,4 @@ void terrain::initialiseTableau() {
      d_tableau[d_caseArrivee.x][d_caseArrivee.y] = 'A';
     }
 }
-*/
+
