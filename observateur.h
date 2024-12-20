@@ -1,1 +1,7 @@
 
+
+class observateur
+{
+public:
+
+};
