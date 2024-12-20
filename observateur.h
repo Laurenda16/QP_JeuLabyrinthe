@@ -1,5 +1,6 @@
 #ifndef OBSERVATEUR_H
 #define OBSERVATEUR_H
+#include"robot.h"
 
 class observateur
 {
