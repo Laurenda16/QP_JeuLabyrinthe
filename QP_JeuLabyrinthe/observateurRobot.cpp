@@ -5,9 +5,9 @@
 
 
 
- void observateurRobot::notifier(int x, int y, char direction)
-  {
-     // std::cout <<"la postionx "<<x<<"la position y "<<y<< "la direction"<< direction;
+ void observateurRobot::notifier(const position& p, char direction){
+    d_nombreDeplacement++;
+    std::cout << "Déplacement: Position (" << p.x << ", " << p.y << ") Direction: " << direction << std::endl
 
   }
 int observateurRobot::nombreDeplacement() const
