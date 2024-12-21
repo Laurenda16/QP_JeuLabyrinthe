@@ -1,6 +1,6 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
-/*
+
 <<<<<<< HEAD
 
 struct position
@@ -45,5 +45,5 @@ class terrain
             bool sontPositionsDepartArriveeValides() const;
 };
 >>>>>>> branchAbdou
-*/
+
 #endif // TERRAIN_H
