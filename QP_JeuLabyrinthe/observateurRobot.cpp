@@ -7,10 +7,4 @@
 
 
 
-int observateurRobot::nombreDeplacement() const
-{
-
-    return d_nombreDeplacement;
-}
-
 

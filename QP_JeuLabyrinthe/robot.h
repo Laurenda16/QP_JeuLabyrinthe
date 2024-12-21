@@ -12,7 +12,7 @@ class robot
 {
     public:
         robot(const position& pos, char direction);
-         position positionXY() const;
+         position positionRobot() const;
         char direction() const;
 
         void avanceUneCase();
@@ -20,13 +20,13 @@ class robot
         void tounerADroite() ;
           bool detecterObstacle() const;
         void notifierObservation() const ;
-        void enregistrerObservateur(const observateurRobot& ob) ;
+       // void enregistrerObservateur(const observateurRobot& ob) ;
 
 
 
     private:
        position d_pos;
-  //   std::vector<observateurRobot> d_observateurs;
+    // std::vector<observateurRobot> d_observateurs;
      char d_direction; //N,E,S,W
 };
 

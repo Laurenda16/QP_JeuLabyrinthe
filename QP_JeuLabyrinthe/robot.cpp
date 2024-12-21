@@ -5,7 +5,7 @@
 {
 
 }
-position robot:: positionXY() const
+position robot:: positionRobot() const
     {
         return d_pos;
 }
@@ -52,5 +52,5 @@ void robot::tounerADroite()
       //  notifierObservateur();
         }
 
- void enregistrerObservateur(const observateurRobot& ob) ;
+// void enregistrerObservateur(const observateurRobot& ob) ;
 

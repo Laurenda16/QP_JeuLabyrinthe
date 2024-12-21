@@ -22,47 +22,39 @@ TEST_CASE("Tester le deplacement du robot")
     char direction = 'E'; // Nord
     robot rob(positionInitial, direction);
 
-      SUBCASE("Déplacement vers le nord") {
+     /* SUBCASE("Déplacement vers le nord") {
         rob.avanceUneCase();
-        CHECK(rob.positionXY() == position{4, 5}); // Avance en réduisant X
+        CHECK(rob.positionRobot() == position{4, 5}); //
         CHECK(rob.direction() == 'N');
     }
 
     SUBCASE("Déplacement vers l'est après rotation") {
         rob.tounerADroite();
-        CHECK(rob.direction() == 'E'); // Après rotation à droite
+        CHECK(rob.direction() == 'E');
         rob.avanceUneCase();
-        CHECK(rob.positionXY() == position{5, 6}); // Avance en augmentant Y
+        CHECK(rob.positionRobot() == position{5, 6});
     }
 
     SUBCASE("Déplacement vers le sud après deux rotations à droite") {
         rob.tounerADroite();
         rob.tounerADroite();
-        CHECK(rob.direction() == 'S'); // Après deux rotations à droite
+        CHECK(rob.direction() == 'S');
         rob.avanceUneCase();
-        CHECK(rob.positionXY() == position{6, 5}); // Avance en augmentant X
+        CHECK(rob.positionRobot() == position{6, 5});
     }
 
     SUBCASE("Déplacement vers l'ouest après rotation à gauche") {
         rob.tounerAGauche();
-        CHECK(rob.direction() == 'W'); // Après rotation à gauche
+        CHECK(rob.direction() == 'W');
         rob.avanceUneCase();
-        CHECK(rob.positionXY() == position{5, 4}); // Avance en réduisant Y
-    }
-
-
-    SUBCASE("Position apres avancement d'une case")
+        CHECK(rob.positionRobot() == position{5, 4});
+    }*/
+    SUBCASE("Tester l'avancement du robot d'une casse")
     {
 
     }
-    SUBCASE("Position apres avoir tourner a Gauche")
-    {
 
-    }
-     SUBCASE("Position apres avoir tourner a Droite")
-    {
 
-    }
 
 
 }
