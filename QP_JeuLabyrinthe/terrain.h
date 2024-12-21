@@ -11,6 +11,8 @@ class terrain
 {
     public:
            terrain(int lignes, int colonnes, const position& caseDepart, const position& caseArrivee);
+           int nombreLignes() const;
+           int nombreColonnes() const;
            position caseDepart() const;
            position caseArrivee() const;
            bool estPositionValide(const position& pos) const;

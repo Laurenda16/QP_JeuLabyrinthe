@@ -1,37 +1,39 @@
 #define DOCTEST_CONFIG_IMPLEMENT
 #include "doctest.h"
 #include"terrain.h"
-
-TEST_CASE("Les cases spéciales du terrain sont valides"){
-   position caseDepart{1, 2}, caseArrivee{2, 3};
-   terrain t{10, 10,caseDepart, caseArrivee};
-   REQUIRE_EQ(t.caseDepart(), caseDepart);
-   REQUIRE_EQ(t.caseArrivee(), caseArrivee);
+void leTerrainEstBienConstruit(int lignes, int colonnes, const position& caseDepart, const position& caseArrivee)
+{
+  terrain t{lignes, colonnes, caseDepart, caseArrivee};
+  REQUIRE_EQ(t.caseDepart(), caseDepart);
+  REQUIRE_EQ(t.caseArrivee(), caseArrivee);
+  REQUIRE_EQ(t.nombreLignes(), lignes);
+  REQUIRE_EQ(t.nombreColonnes(), colonnes);
 }
-TEST_CASE("La méthode estPositionValide est correcte"){
+TEST_CASE(" Le constructeur de terrain est correct"){
+   int nombreLignes{10}, nombreColonnes{10};
+   position caseDepart{1, 2}, caseArrivee{2, 3};
+   leTerrainEstBienConstruit(nombreLignes,nombreColonnes, caseDepart, caseArrivee);
+}
+TEST_CASE("La methode estPositionValide est correcte"){
     int nombreLignes{10};
     int nombreColonnes{10};
     position caseDepart{2, 3};
     position caseArrivee{9, 8};
+    terrain terr{nombreLignes, nombreColonnes, caseDepart, caseArrivee};
+    position POSITION{9, 9};
    SUBCASE("La position est valide")
    {
-    terrain terr1{nombreLignes, nombreColonnes, caseDepart, caseArrivee};
-     bool valide1 = terr1.estPositionValide(caseDepart);
-     bool valide2 = terr1.estPositionValide(caseArrivee);
-     REQUIRE_EQ(valide1, true);
-     REQUIRE_EQ(valide2, true);
+     bool valide = terr.estPositionValide(POSITION);
+     REQUIRE_EQ(valide, true);
    }
    SUBCASE("La position n'est pas valide")
    {
-     caseDepart = {11, 13};
-     caseArrivee = {13, 14};
-     terrain terr2{nombreLignes, nombreColonnes, caseDepart, caseArrivee};
-     bool nonValide1 = terr2.estPositionValide(caseDepart);
-     bool nonValide2 = terr2.estPositionValide(caseArrivee);
-     REQUIRE_EQ(nonValide1, false);
-     REQUIRE_EQ(nonValide2, false);
+     POSITION  = {10, 10};
+     bool nonValide = terr.estPositionValide(POSITION);
+     REQUIRE_EQ(nonValide, false);
    }
 }
+
 TEST_CASE("La méthode sontPositionsDepartArriveeValides est correcte")
 {
     int nombreLignes{10};
@@ -70,11 +72,9 @@ TEST_CASE("La méthode sontPositionsDepartArriveeValides est correcte")
      }
    }
 }
-
 int main(int argc, char** argv) {
     doctest::Context context;
     int res = context.run();
-
     system("pause");  // Pause pour garder la fenêtre ouverte sur Windows
     return res;
 }

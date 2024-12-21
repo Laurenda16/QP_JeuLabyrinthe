@@ -1,8 +1,16 @@
 #include "terrain.h"
 terrain::terrain(int lignes, int colonnes, const position& caseDepart, const position& caseArrivee): d_lignes{lignes}, d_colonnes{colonnes}, d_caseDepart{caseDepart},
-d_caseArrivee{caseArrivee}{/*initialiseTableau();*/}
-position terrain::caseDepart() const{return d_caseDepart;}
-position terrain::caseArrivee() const{return d_caseArrivee ;}
+
+d_caseArrivee{caseArrivee}{initialiseTableau();}
+
+position terrain::caseDepart() const {return d_caseDepart;}
+
+position terrain::caseArrivee() const {return d_caseArrivee ;}
+
+int terrain::nombreLignes() const {return d_lignes; }
+
+int terrain::nombreColonnes() const {return d_colonnes;}
+
 bool terrain::estPositionValide(const position& pos) const
 {
   return (pos.x >= 0 && pos.x < d_lignes &&
@@ -17,7 +25,7 @@ void terrain::initialiseTableau() {
     d_tableau = vector<vector<char>>(d_lignes, vector<char>(d_colonnes, 'X'));
 
     if (!sontPositionsDepartArriveeValides()) {
-        throw invalid_argument("Les positions de départ et/ou d'arrivée sont invalides.");
+        throw invalid_argument("Les positions de depart et/ou d'arrivee sont invalides");
     }
     else
     {
