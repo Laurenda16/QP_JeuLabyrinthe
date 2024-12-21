@@ -26,7 +26,7 @@ class robot
 
     private:
        position d_pos;
-    // std::vector<observateurRobot> d_observateurs;
+    // std::vector<observateur> d_observateurs;
      char d_direction; //N,E,S,W
 };
 

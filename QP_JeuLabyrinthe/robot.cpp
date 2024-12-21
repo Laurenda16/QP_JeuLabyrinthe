@@ -25,7 +25,7 @@ void robot::notifierObservateur()
 {
    for(const auto& o : d_observateurs)
 {
-   // o->notifier(x, y,direction);
+   // o->notifie(*this);
 
 }*/
 void robot::avanceUneCase()
