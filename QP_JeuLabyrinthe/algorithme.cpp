@@ -1,5 +1,6 @@
 #include"robot.h"
-#include"observateurRobot.h"
+#include"terrain.h"
+
 
 
 
@@ -19,7 +20,7 @@ void algoMainDroite(robot& r) {
         }
         r.notifierObservation(); // Notifier les observateurs du déplacement
         // Condition d'arrêt (exemple : si le robot atteint une position cible)
-        if (r.positionRobot().x == 0 && r.positionRobot().y == 0) {
+        if (r.positionRobot().x == caseArrivee().x && r.positionRobot().y == caseArrivee().y)) {
             break; // Fin de l'algorithme si le robot revient à (0, 0)
         }
     }
