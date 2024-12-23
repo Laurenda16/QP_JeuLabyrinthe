@@ -16,7 +16,14 @@ class observateurRobot : public observateur
 {
 public:
     void notifie(const robot& r) const override;
+<<<<<<< HEAD
     int nombreDeplacement() const;
+=======
+ 
+    int nombreDeplacement() const;
+    private:
+    int d_nombreDeplacement;
+>>>>>>> master
 };
 
 

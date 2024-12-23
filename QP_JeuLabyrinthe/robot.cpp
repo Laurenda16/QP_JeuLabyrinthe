@@ -37,6 +37,14 @@ void robot::avanceUneCase()
             case 'S': d_pos.x++; break;
             case 'W': d_pos.x--; break;
         }
+        if(!detecterObstacle){
+
+        switch (d_direction) {
+        case 'N': d_pos.x--; break;
+        case 'E': d_pos.y++; break;
+        case 'S': d_pos.x++; break;
+        case 'W': d_pos.x--; break;
+        }
 
     // notifierObservation() ;
 }
@@ -51,6 +59,16 @@ void robot::tounerADroite()
        d_direction = (d_direction == 'N') ? 'E' : (d_direction == 'E') ? 'S' : (d_direction == 'S') ? 'W' : 'N';
       //  notifierObservateur();
         }
+    bool robot::detecterObstacle() const{
+    position newPos = d_pos;
+    if (d_direction == 'N') --newPos.x;
+    else if (d_direction == 'E') ++newPos.y;
+    else if (d_direction == 'S') ++newPos.x;
+    else if (d_direction == 'W') --newPos.y;
+    if (d_terrain->obtenirContenuCase(newPos) == 'X')
+        return true;
+    return false;
+}
 
 // void enregistrerObservateur(const observateurRobot& ob) ;
 
