@@ -13,5 +13,10 @@ void observateur::notifie(const robot& r) const
     cout<<message;
 }
 
+int observateurRobot:: nombreDeplacement() const
+{
+    return d_nombreDeplacement;
+}
+
 
 
