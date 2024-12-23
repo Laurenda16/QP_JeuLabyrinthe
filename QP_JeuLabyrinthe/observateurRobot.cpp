@@ -1,13 +1,14 @@
 #include <istream>
 #include <ostream>
 #include "observateurRobot.h"
+#include"string"
 
 #include "robot.h"
 
 void observateur::notifie(const robot& r) const
 {
-    std::cout << "Le robot est en position x : "<<r.positionRobot().x <<" position y: "<<r.positionRobot().y;
-    std::cout<< "direction: " << r.direction() << "\n";
+    std::string message = "Le robot est en position x : " + std::to_string(r.positionRobot().x) + " position y: " + std::to_string(r.positionRobot().y) + "direction: " + r.direction() ;
+    cout<<message;
 }
 
 
