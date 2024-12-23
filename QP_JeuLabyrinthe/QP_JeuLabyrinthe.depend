@@ -97,3 +97,13 @@
 
 1734818328 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\algorithme.cpp
 
+1734820075 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\main.cpp
+	<iostream>
+
+1734820075 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\terrain.cpp
+	"terrain.h"
+
+1734820075 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\terrain.h
+	<iostream>
+	<vector>
+
