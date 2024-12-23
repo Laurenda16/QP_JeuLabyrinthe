@@ -38,36 +38,17 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="algorithme.cpp" />
-<<<<<<< HEAD
-		<Unit filename="doctest.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="observateurRobot.cpp" />
 		<Unit filename="observateurRobot.h" />
 		<Unit filename="robot.cpp" />
 		<Unit filename="robot.h" />
-=======
-		<Unit filename="observateurRobot.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="observateurRobot.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="robot.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="robot.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
->>>>>>> master
 		<Unit filename="terrain.cpp" />
 		<Unit filename="terrain.h">
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
+		<Unit filename="testAlgomainDroite.cpp" />
 		<Unit filename="testObservateurRobot.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />

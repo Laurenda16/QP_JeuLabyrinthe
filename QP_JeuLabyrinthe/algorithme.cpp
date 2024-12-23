@@ -1,3 +1,4 @@
+
 #include"robot.h"
 #include"terrain.h"
 
@@ -22,6 +23,29 @@ void algoMainDroite(robot& r) {
         // Condition d'arrêt (exemple : si le robot atteint une position cible)
         if (r.positionRobot().x == caseArrivee().x && r.positionRobot().y == caseArrivee().y)) {
             break; // Fin de l'algorithme si le robot revient à (0, 0)
+        }
+    }
+}
+
+
+void PledgeAlgorithm(robot& robot) {
+    int turnCount = 0;
+    terrain t=(robot.terain());
+    while (!(robot.positionRobot() == t.caseArrivee())) {
+        if (turnCount == 0 && robot.detecterObstacle()) {
+            continue;
+        }
+
+        robot.tounerAGauche();
+        ++turnCount;
+
+        if (!robot.detecterObstacle()) {
+            robot.tounerADroite();
+            turnCount -= 1; // Droite = -1
+            if (!robot.detecterObstacle()) {
+                robot.tounerADroite();
+                turnCount -= 1;
+            }
         }
     }
 }
