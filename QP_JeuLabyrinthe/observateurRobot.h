@@ -15,12 +15,12 @@ public:
 
 class observateurRobot : public observateur
 {
-public:
-    void notifie(const robot& r) const override;
- 
-    int nombreDeplacement() const;
-    private:
     int d_nombreDeplacement;
+public:
+    observateurRobot();
+    void notifie(const robot& r) const override;
+    int nombreDeplacement() const;
+
 };
 
 #endif // OBSERVATEURROBOT_H
