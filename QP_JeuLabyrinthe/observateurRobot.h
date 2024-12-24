@@ -14,19 +14,11 @@ public:
 };
 class observateurRobot : public observateur
 {
-<<<<<<< HEAD
 public:
     void notifie(const robot& r) const override;
     int nombreDeplacement() const;
 private:
     int d_nombreDeplacement;
-=======
-    int d_nombreDeplacement;
-public:
-    observateurRobot();
-    void notifie(const robot& r) const override;
-    int nombreDeplacement() const;
->>>>>>> 2a412998c24f00e23630e0da3c919839339e0b2d
 
 };
 
