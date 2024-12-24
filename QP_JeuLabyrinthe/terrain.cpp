@@ -44,7 +44,7 @@ void terrain::ajouteMur(int ligne, int colonne)
   d_tableau[ligne][colonne] = 'x';
 }
 
-void terrain::modifieDepart(position& Depart)
+void terrain::modifieCaseDepart(position& Depart)
 {
   if (d_tableau.empty()) {
         throw std::runtime_error("Terrain vide, impossible de definir un depart");
@@ -59,7 +59,7 @@ void terrain::modifieDepart(position& Depart)
    d_caseDepart = Depart;
 }
 
-void terrain::modifieArrivee(position& Arrivee)
+void terrain::modifieCaseArrivee(position& Arrivee)
 {
   if (d_tableau.empty()) {
         throw std::runtime_error("Terrain vide, impossible de definir un depart");
@@ -71,5 +71,5 @@ void terrain::modifieArrivee(position& Arrivee)
     if (d_tableau[Arrivee.ligne][Arrivee.colonne] == 'x') {
         throw std::runtime_error("Arrivee sur un mur, interdit");
     }
-   d_caseDepart = Arrivee;
+   d_caseArrivee = Arrivee;
 }

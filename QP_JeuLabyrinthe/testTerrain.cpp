@@ -127,7 +127,7 @@ TEST_CASE("La méthode ajouteMur est correcte")
       REQUIRE_EQ((tr.tableau())[ligne][colonne], 'x');
     }
 }
-TEST_CASE("La methode modifieDepart est correcte")
+TEST_CASE("La methode modifieCaseDepart est correcte")
 {
   position nouveauDepart{1, 2};
   terrain tr{};
@@ -135,7 +135,7 @@ TEST_CASE("La methode modifieDepart est correcte")
   SUBCASE("Le nouveau depart devient le depart")
   {
     tr.redimensionne(hauteur, largeur);
-    tr.modifieDepart(nouveauDepart);
+    tr.modifieCaseDepart(nouveauDepart);
     REQUIRE_EQ(tr.caseDepart(), nouveauDepart);
   }
   SUBCASE("Le depart n' est pas modifie si le terrain est vide")
@@ -149,7 +149,7 @@ TEST_CASE("La methode modifieDepart est correcte")
      REQUIRE_FALSE(tr.caseDepart()==nouveauDepart);
   }
 }
-TEST_CASE("La methode modifieArrivee est correcte")
+TEST_CASE("La methode modifieCaseArrivee est correcte")
 {
   position nouvelleArrivee{1, 2};
   terrain tr{};
@@ -157,18 +157,18 @@ TEST_CASE("La methode modifieArrivee est correcte")
   SUBCASE("nouvelleArrivee devient la position d'arrivee")
   {
     tr.redimensionne(hauteur, largeur);
-    tr.modifieDepart(nouvelleArrivee);
-    REQUIRE_EQ(tr.caseDepart(), nouvelleArrivee);
+    tr.modifieCaseArrivee(nouvelleArrivee);
+    REQUIRE_EQ(tr.caseArrivee(), nouvelleArrivee);
   }
   SUBCASE("L'arrivee n' est pas modifie si le terrain est vide")
   {
-    REQUIRE_FALSE(tr.caseDepart()==nouvelleArrivee);
+    REQUIRE_FALSE(tr.caseArrivee()==nouvelleArrivee);
   }
   SUBCASE("L'arrivee n' est pas modifie s'il y'a un mur a la position nouvelleArrivee")
   {
     tr.redimensionne(hauteur, largeur);
     (tr.tableau())[nouvelleArrivee.ligne][nouvelleArrivee.colonne] = 'x';
-     REQUIRE_FALSE(tr.caseDepart()==nouvelleArrivee);
+     REQUIRE_FALSE(tr.caseArrivee()==nouvelleArrivee);
   }
 }
 int main(int argc, char** argv) {

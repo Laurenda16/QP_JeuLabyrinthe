@@ -19,8 +19,8 @@ class terrain
            bool estCaseValide(int ligne, int colonne) const;
            void ajouteCaseVide(int ligne, int colonne);
            void ajouteMur(int ligne, int colonne);
-           void modifieDepart(position& Depart);
-           void modifieArrivee(position& Arrivee);
+           void modifieCaseDepart(position& Depart);
+           void modifieCaseArrivee(position& Arrivee);
            void imprimeSur(const string& nomFichier) const;
            void litDepuis(const string& nomFichier);
  private:
