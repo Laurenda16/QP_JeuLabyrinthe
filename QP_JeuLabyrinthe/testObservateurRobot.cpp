@@ -1,11 +1,13 @@
 #include "doctest.h"
+
 #include "observateurRobot.h"
 
+class robot;
 class observateurRobot;
 
 
 TEST_CASE("Vérification des données de sortie du robot ") {
-    robot monRobot(1, 2, "E");
+    robot monRobot {1, 2, "E"};
     observateurRobot obs;
 
     // Construction du message attendu

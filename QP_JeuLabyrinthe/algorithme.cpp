@@ -3,9 +3,7 @@
 #include"terrain.h"
 
 
-
-
-void algoMainDroite(robot& r) {
+/*void algoMainDroite(robot& r) {
     while (true) {
         // Si le robot détecte un obstacle à droite, avancer ou tourner à gauche
         r.tounerADroite(); // Tourner à droite pour vérifier s'il y a un mur
@@ -25,13 +23,19 @@ void algoMainDroite(robot& r) {
             break; // Fin de l'algorithme si le robot revient à (0, 0)
         }
     }
-}
+}*/
 
 
-void PledgeAlgorithm(robot& robot) {
+
+
+/*void PledgeAlgorithm(robot& robot)
+{
     int turnCount = 0;
     terrain t=(robot.terain());
-    while (!(robot.positionRobot() == t.caseArrivee())) {
+
+    while (!(robot.positionRobot() == t.caseArrivee()))
+    {
+
         if (turnCount == 0 && robot.detecterObstacle()) {
             continue;
         }
@@ -42,11 +46,13 @@ void PledgeAlgorithm(robot& robot) {
         if (!robot.detecterObstacle()) {
             robot.tounerADroite();
             turnCount -= 1; // Droite = -1
-            if (!robot.detecterObstacle()) {
+            if (!robot.detecterObstacle())
+                {
                 robot.tounerADroite();
                 turnCount -= 1;
             }
+
         }
-    }
-}
+ }
+}*/
 

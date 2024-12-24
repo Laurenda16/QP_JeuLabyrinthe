@@ -2,20 +2,22 @@
 1734548697 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\main.cpp
 	<iostream>
 
-1734997128 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.cpp
+1735031954 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.cpp
 	<istream>
 	<ostream>
 	"observateurRobot.h"
+	"string"
 	"robot.h"
 
-1734997128 c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.h
+1735031810 c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.h
 	"robot.h"
 
-1734818585 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.cpp
+1734997128 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.cpp
 	"terrain.h"
 	"robot.h"
+	"observateurRobot.h"
 
-1734997128 c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.h
+1735031379 c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.h
 	<memory>
 	<vector>
 	"terrain.h"
@@ -95,7 +97,9 @@
 1731683251 c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\point.h
 	<iosfwd>
 
-1734818328 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\algorithme.cpp
+1735031259 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\algorithme.cpp
+	"robot.h"
+	"terrain.h"
 
 1734818328 D
 
@@ -251,4 +255,12 @@
 	<io.h>
 	<sys/time.h>
 	<unistd.h>
+
+1735003743 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\testalgomaindroite.cpp
+	"doctest.h"
+	"algorithme.cpp"
+
+1735031259 c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\algorithme.cpp
+	"robot.h"
+	"terrain.h"
 

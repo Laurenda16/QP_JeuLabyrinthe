@@ -5,7 +5,10 @@
 
 #include "robot.h"
 
-<<<<<<< HEAD
+
+observateurRobot::observateurRobot():d_nombreDeplacement{0}
+{}
+
 void observateur::notifie(const robot& r) const
 {
     std::string message = "Le robot est en position x : " + std::to_string(r.positionRobot().x)
@@ -14,23 +17,17 @@ void observateur::notifie(const robot& r) const
     cout<<message;
 }
 
-int observateurRobot:: nombreDeplacement() const
-{
-=======
-observateurRobot::observateurRobot():
-    d_nombreDeplacement{0}
-{}
+int observateurRobot::nombreDeDeplacement() const{
+return d_nombreDeplacement;
+}
+
 
 void observateurRobot::notifie(const robot& r) const{
-    d_nombreDeplacement++;
+  nombreDeDeplacement();
     std::cout << "Le robot est en position x : "<<r.positionRobot().x <<" position y: "<<r.positionRobot().y;
     std::cout<< "direction: " << r.direction() << "\n";
   }
 
-int observateurRobot::nombreDeplacement() const{
->>>>>>> 2a412998c24f00e23630e0da3c919839339e0b2d
-    return d_nombreDeplacement;
-}
 
 
 

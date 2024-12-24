@@ -5,6 +5,8 @@
 
 #include "terrain.h"
 #include "observateurRobot.h"
+class observateurRobot;
+
 class robot
 {
     public:
@@ -18,7 +20,7 @@ class robot
 
         bool detecterObstacle() const;
         void notifierObservateur() const ;
-        void enregistrerObservateur(const observateurRobot& ob) ;
+       void enregistrerObservateur(const observateurRobot& ob) ;
 
 
 
@@ -27,6 +29,8 @@ private:
     position d_pos;
     std::vector<observateurRobot> d_observateurs;
     char d_direction; //N,E,S,W
+
+};
 #endif // ROBOT_H
 
 
