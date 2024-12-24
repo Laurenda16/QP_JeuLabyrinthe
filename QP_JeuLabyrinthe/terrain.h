@@ -1,32 +1,30 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
-
 #include<iostream>
 #include<vector>
-struct  position{int x, y;
-   bool operator==(const position& p) const {return p.x == x && p.y == y;}
+struct  position{int ligne, colonne;
+   bool operator==(const position& p) const {return p.ligne == ligne && p.colonne == colonne;}
 };
 using namespace std;
 class terrain
 {
     public:
-           terrain(int lignes, int colonnes, const position& caseDepart, const position& caseArrivee);
-           int nombreLignes() const;
-           int nombreColonnes() const;
+           terrain();
            position caseDepart() const;
            position caseArrivee() const;
-           bool estPositionValide(const position& pos) const;
-           bool sontPositionsDepartArriveeValides() const;
-           void initialiseTableau();
+           vector<vector<char>> tableau() const;
+           int hauteur() const;
+           int largeur() const;
+           void redimensionne(int hauteur, int largeur);
+           bool estCaseValide(int ligne, int colonne) const;
+           void ajouteCaseVide(int ligne, int colonne);
+           void ajouteMur(int ligne, int colonne);
+           void modifieDepart(position& Depart);
+           void modifieArrivee(position& Arrivee);
            void imprimeSur(const string& nomFichier) const;
            void litDepuis(const string& nomFichier);
-
  private:
         vector<vector<char>> d_tableau;
-        int d_lignes, d_colonnes;//le nombre de lignes et le nombre de colonnes du terrain
-        position d_caseDepart, d_caseArrivee;
-
+        position d_caseDepart, d_caseArrivee;//{-1, -1},{-1, -1} si tableau vide
 };
-
-
 #endif // TERRAIN_H

@@ -1,36 +1,75 @@
 #include "terrain.h"
-terrain::terrain(int lignes, int colonnes, const position& caseDepart, const position& caseArrivee): d_lignes{lignes}, d_colonnes{colonnes}, d_caseDepart{caseDepart},
-
-d_caseArrivee{caseArrivee}{initialiseTableau();}
+terrain::terrain(): d_caseDepart{-1, -1},
+d_caseArrivee{-1, -1}, d_tableau{} {}
 
 position terrain::caseDepart() const {return d_caseDepart;}
 
 position terrain::caseArrivee() const {return d_caseArrivee ;}
 
-int terrain::nombreLignes() const {return d_lignes; }
+vector<vector<char>> terrain::tableau() const {return d_tableau;}
 
-int terrain::nombreColonnes() const {return d_colonnes;}
+int terrain::hauteur() const {return d_tableau.size();}
 
-bool terrain::estPositionValide(const position& pos) const
+int terrain::largeur() const {return !d_tableau.empty() ? d_tableau[0].size() : 0;}
+
+void terrain::redimensionne(int hauteur, int largeur)
 {
-  return (pos.x >= 0 && pos.x < d_lignes &&
-           pos.y >= 0 && pos.y < d_colonnes);
+    d_tableau.clear();
+    d_tableau.resize(hauteur, std::vector<char>(largeur, '.'));
+    d_caseDepart = {-1, -1};
+    d_caseArrivee = {-1, -1};
 }
-bool terrain::sontPositionsDepartArriveeValides() const
+
+bool terrain::estCaseValide(int ligne, int colonne) const
 {
-  return estPositionValide(d_caseDepart) && estPositionValide(d_caseArrivee);
+   return (ligne >= 0 && ligne  < hauteur())&&
+                   (colonne >= 0 && colonne < largeur()) ? true : false;
 }
-void terrain::initialiseTableau() {
 
-    d_tableau = vector<vector<char>>(d_lignes, vector<char>(d_colonnes, 'X'));
+void terrain::ajouteCaseVide(int ligne, int colonne)
+{
+  if(!estCaseValide(ligne, colonne))
+  {
+    throw std::out_of_range("Indice hors bornes dans ajouteCaseVide");
+  }
+  d_tableau[ligne][colonne] = '.';
+}
 
-    if (!sontPositionsDepartArriveeValides()) {
-        throw invalid_argument("Les positions de depart et/ou d'arrivee sont invalides");
+void terrain::ajouteMur(int ligne, int colonne)
+{
+  if(!estCaseValide(ligne, colonne))
+  {
+    throw std::out_of_range("Indice hors bornes dans ajouteCaseVide");
+  }
+  d_tableau[ligne][colonne] = 'x';
+}
+
+void terrain::modifieDepart(position& Depart)
+{
+  if (d_tableau.empty()) {
+        throw std::runtime_error("Terrain vide, impossible de definir un depart");
     }
-    else
+    if(!estCaseValide(Depart.ligne, Depart.colonne))
     {
-     d_tableau[d_caseDepart.x][d_caseDepart.y] = 'D';
-     d_tableau[d_caseArrivee.x][d_caseArrivee.y] = 'A';
+        throw std::out_of_range("Depart hors bornes");
     }
+    if (d_tableau[Depart.ligne][Depart.colonne] == 'x') {
+        throw std::runtime_error("Depart sur un mur, interdit");
+    }
+   d_caseDepart = Depart;
 }
 
+void terrain::modifieArrivee(position& Arrivee)
+{
+  if (d_tableau.empty()) {
+        throw std::runtime_error("Terrain vide, impossible de definir un depart");
+    }
+    if(!estCaseValide(Arrivee.ligne, Arrivee.colonne))
+    {
+        throw std::out_of_range("Depart hors bornes");
+    }
+    if (d_tableau[Arrivee.ligne][Arrivee.colonne] == 'x') {
+        throw std::runtime_error("Arrivee sur un mur, interdit");
+    }
+   d_caseDepart = Arrivee;
+}

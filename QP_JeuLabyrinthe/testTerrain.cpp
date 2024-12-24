@@ -1,76 +1,175 @@
 #define DOCTEST_CONFIG_IMPLEMENT
 #include "doctest.h"
 #include"terrain.h"
-void leTerrainEstBienConstruit(int lignes, int colonnes, const position& caseDepart, const position& caseArrivee)
-{
-  terrain t{lignes, colonnes, caseDepart, caseArrivee};
-  REQUIRE_EQ(t.caseDepart(), caseDepart);
-  REQUIRE_EQ(t.caseArrivee(), caseArrivee);
-  REQUIRE_EQ(t.nombreLignes(), lignes);
-  REQUIRE_EQ(t.nombreColonnes(), colonnes);
-}
-TEST_CASE(" Le constructeur de terrain est correct"){
-   int nombreLignes{10}, nombreColonnes{10};
-   position caseDepart{1, 2}, caseArrivee{2, 3};
-   leTerrainEstBienConstruit(nombreLignes,nombreColonnes, caseDepart, caseArrivee);
-}
-TEST_CASE("La methode estPositionValide est correcte"){
-    int nombreLignes{10};
-    int nombreColonnes{10};
-    position caseDepart{2, 3};
-    position caseArrivee{9, 8};
-    terrain terr{nombreLignes, nombreColonnes, caseDepart, caseArrivee};
-    position POSITION{9, 9};
-   SUBCASE("La position est valide")
-   {
-     bool valide = terr.estPositionValide(POSITION);
-     REQUIRE_EQ(valide, true);
-   }
-   SUBCASE("La position n'est pas valide")
-   {
-     POSITION  = {10, 10};
-     bool nonValide = terr.estPositionValide(POSITION);
-     REQUIRE_EQ(nonValide, false);
-   }
-}
 
-TEST_CASE("La méthode sontPositionsDepartArriveeValides est correcte")
+TEST_CASE("Le terrain est bien construit")
 {
-    int nombreLignes{10};
-    int nombreColonnes{10};
-    position caseDepart{2, 3};
-    position caseArrivee{9, 8};
-   SUBCASE("toutes les positions sont valides")
+    terrain tr{};
+    position positionInitiale{-1, -1};
+  SUBCASE("les cases de départ sont biens définis au début")
+  {
+    REQUIRE_EQ(tr.caseDepart(), positionInitiale);
+    REQUIRE_EQ(tr.caseArrivee(), positionInitiale);
+  }
+  SUBCASE("Le tableau est vide initialement")
+  {
+      REQUIRE_EQ(tr.tableau().size(), 0);
+  }
+}
+TEST_CASE("la methode redimensionne est correcte")
+{
+  terrain t{};
+  int largeur{10}, hauteur{10};
+  position positionInitiale{-1, -1};
+  t.redimensionne(10, 10);
+  SUBCASE("La taille du terrain est bien reinitialisee")
+  {
+   REQUIRE_EQ(t.hauteur(),  hauteur);
+   REQUIRE_EQ(t.largeur(),  largeur);
+  }
+  SUBCASE("La case de een reinitialisee")
+  {
+      REQUIRE_EQ(t.caseDepart(), positionInitiale);
+  }
+  SUBCASE("La case d'arrivee est bien reinitialisee")
+  {
+      REQUIRE_EQ(t.caseArrivee(), positionInitiale);
+  }
+}
+TEST_CASE("La méthode largeur est correcte")
+{
+   terrain tr{};
+   SUBCASE("Le terrain est vide")
    {
-     terrain terr1{nombreLignes, nombreColonnes, caseDepart, caseArrivee};
-     bool valide = terr1.sontPositionsDepartArriveeValides();
+     REQUIRE_EQ(tr.largeur(),  0);
+   }
+   SUBCASE("Le terrain n'est pas vide")
+   {
+       int hauteur{7}, largeur{20};
+       tr.redimensionne(hauteur, largeur);
+       REQUIRE_EQ(tr.largeur(),largeur);
+   }
+}
+TEST_CASE("La méthode estCaseValide est correcte")
+{
+    terrain tr{};
+    int hauteur{7}, largeur{20};
+    tr.redimensionne(hauteur, largeur);
+   SUBCASE("La case est valide")
+   {
+     int ligne{hauteur-1 }, colonne{largeur-1};
+     bool valide = tr.estCaseValide(ligne, colonne);
      REQUIRE_EQ(valide, true);
    }
-   SUBCASE("Toutes les positions ne sont pas valides lorsque l'une au moins n'est pas valide")
+   SUBCASE("La case n'est pas valide")
    {
-    SUBCASE("si la case depart n'est pas valide")
-     {
-        caseDepart = {10, 10};
-        terrain terr1{nombreLignes, nombreColonnes, caseDepart, caseArrivee};
-        bool nonvalide = terr1.sontPositionsDepartArriveeValides();
-        REQUIRE_EQ(nonvalide, false);
-     }
-     SUBCASE("si la case d'arrivee n'est pas valides ")
-     {
-      caseArrivee = {19, 8};
-      terrain terr2{nombreLignes, nombreColonnes, caseDepart, caseArrivee};
-      bool nonvalide = terr2.sontPositionsDepartArriveeValides();
-      REQUIRE_EQ(nonvalide, false);
-     }
-     SUBCASE("si toutes les cases ne sont pas valides ")
-     {
-       caseDepart = {10, 10};
-       caseArrivee = {19, 8};
-       terrain terr3{nombreLignes, nombreColonnes, caseDepart, caseArrivee};
-       bool nonvalide = terr3.sontPositionsDepartArriveeValides();
-       REQUIRE_EQ(nonvalide, false);
-     }
+
+    SUBCASE("si la ligne est egale à la hauteur")
+    {
+       int ligne{hauteur}, colonne{largeur-1};
+       bool valide = tr.estCaseValide(ligne, colonne);
+       REQUIRE_EQ(valide, false);
+    }
+    SUBCASE(" si la ligne est superieure à la hauteur")
+    {
+       int ligne{hauteur+1}, colonne{largeur-1};
+       bool valide = tr.estCaseValide(ligne, colonne);
+       REQUIRE_EQ(valide, false);
+    }
+    SUBCASE("si la colonne est egale à la largeur")
+    {
+     int ligne{hauteur-1 }, colonne{largeur};
+     bool valide = tr.estCaseValide(ligne, colonne);
+     REQUIRE_EQ(valide, false);
+    }
+    SUBCASE("si la colonne est superieure à la largeur")
+    {
+     int ligne{hauteur-1 }, colonne{largeur+1};
+     bool valide = tr.estCaseValide(ligne, colonne);
+     REQUIRE_EQ(valide, false);
+    }
    }
+}
+TEST_CASE("La méthode ajouteCaseVide est correcte")
+{
+    int hauteur{7}, largeur{20};
+    terrain tr{};
+    tr.redimensionne(hauteur, largeur);
+    SUBCASE("La case vide n'est pas ajoutee si la case n'est pas valide")
+    {
+      int ligne{hauteur}, colonne{largeur};
+      tr.ajouteCaseVide(ligne, colonne);
+      WARN("Indice hors bornes dans ajouteCaseVide");
+    }
+    SUBCASE("La case vide est ajoutee si la case est valide")
+    {
+      int ligne{hauteur-1}, colonne{largeur-1};
+      tr.ajouteCaseVide(ligne, colonne);
+      REQUIRE_EQ((tr.tableau())[ligne][colonne], '.');
+    }
+
+}
+TEST_CASE("La méthode ajouteMur est correcte")
+{
+  int hauteur{7}, largeur{20};
+    terrain tr{};
+    tr.redimensionne(hauteur, largeur);
+    SUBCASE("La case vide n'est pas ajoutee si la case n'est pas valide")
+    {
+      int ligne{hauteur}, colonne{largeur};
+      tr.ajouteCaseVide(ligne, colonne);
+      WARN("Indice hors bornes dans ajouteCaseVide");
+    }
+    SUBCASE("La case vide est ajoutee si la case est valide")
+    {
+      int ligne{hauteur-1}, colonne{largeur-1};
+      tr.ajouteCaseVide(ligne, colonne);
+      REQUIRE_EQ((tr.tableau())[ligne][colonne], 'x');
+    }
+}
+TEST_CASE("La methode modifieDepart est correcte")
+{
+  position nouveauDepart{1, 2};
+  terrain tr{};
+  int hauteur{7}, largeur{20};
+  SUBCASE("Le nouveau depart devient le depart")
+  {
+    tr.redimensionne(hauteur, largeur);
+    tr.modifieDepart(nouveauDepart);
+    REQUIRE_EQ(tr.caseDepart(), nouveauDepart);
+  }
+  SUBCASE("Le depart n' est pas modifie si le terrain est vide")
+  {
+    REQUIRE_FALSE(tr.caseDepart()==nouveauDepart);
+  }
+  SUBCASE("Le depart n' est pas modifie s'il y'a un mur a la position nouveau depart")
+  {
+    tr.redimensionne(hauteur, largeur);
+    (tr.tableau())[nouveauDepart.ligne][nouveauDepart.colonne] = 'x';
+     REQUIRE_FALSE(tr.caseDepart()==nouveauDepart);
+  }
+}
+TEST_CASE("La methode modifieArrivee est correcte")
+{
+  position nouvelleArrivee{1, 2};
+  terrain tr{};
+  int hauteur{7}, largeur{20};
+  SUBCASE("nouvelleArrivee devient la position d'arrivee")
+  {
+    tr.redimensionne(hauteur, largeur);
+    tr.modifieDepart(nouvelleArrivee);
+    REQUIRE_EQ(tr.caseDepart(), nouvelleArrivee);
+  }
+  SUBCASE("L'arrivee n' est pas modifie si le terrain est vide")
+  {
+    REQUIRE_FALSE(tr.caseDepart()==nouvelleArrivee);
+  }
+  SUBCASE("L'arrivee n' est pas modifie s'il y'a un mur a la position nouvelleArrivee")
+  {
+    tr.redimensionne(hauteur, largeur);
+    (tr.tableau())[nouvelleArrivee.ligne][nouvelleArrivee.colonne] = 'x';
+     REQUIRE_FALSE(tr.caseDepart()==nouvelleArrivee);
+  }
 }
 int main(int argc, char** argv) {
     doctest::Context context;
