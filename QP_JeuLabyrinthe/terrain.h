@@ -19,7 +19,7 @@ class terrain
 
     private:
             vector<vector<char>> d_tableau;
-            int d_lignes, d_colonnes; // le nombre de lignes et de colonnes du terrain
+            int d_lignes, d_colonnes; 
             position d_caseDepart, d_caseArrivee;
             bool estPositionValide(const position& pos) const;
             bool sontPositionsDepartArriveeValides() const;

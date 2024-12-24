@@ -78,10 +78,12 @@
 	<sys/time.h>
 	<unistd.h>
 
-1734548665 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\testobservateurrobot.cpp
+1735033734 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\testobservateurrobot.cpp
 	"doctest.h"
+	"observateurRobot.h"
+	"robot.h"
 
-1734738510 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\testrobot.cpp
+1735033761 source:c:\users\lolo pc\desktop\qp_jeulabyrinthe\qp_jeulabyrinthe\testrobot.cpp
 	"doctest.h"
 	"robot.h"
 

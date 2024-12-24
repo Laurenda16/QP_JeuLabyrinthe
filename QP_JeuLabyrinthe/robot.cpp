@@ -32,7 +32,7 @@ void robot::notifierObservateur() const
 void robot::avanceUneCase()
 {
 //tenir compte de sa direction
-    //if(!detecterObstacle){
+    if(!detecterObstacle){
             switch (d_direction) {
             case 'N': d_pos.x--; break;
             case 'E': d_pos.y++; break;
@@ -41,7 +41,7 @@ void robot::avanceUneCase()
         }
 
 
-    //}
+    }
 
     notifierObservateur() ;
 }
@@ -62,7 +62,7 @@ void robot::tounerADroite()
      d_observateurs.push_back(ob);
  }
 
- /*
+ 
  bool robot::detecterObstacle() const{
     position newPos = d_pos;
     if (d_direction == 'N') --newPos.x;
@@ -75,7 +75,7 @@ void robot::tounerADroite()
     return false;
 }
 
- */
+ 
 
 
 

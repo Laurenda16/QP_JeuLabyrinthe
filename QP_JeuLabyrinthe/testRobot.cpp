@@ -23,12 +23,12 @@ TEST_CASE("Tester de la classe robot")
         CHECK(rob.positionRobot() == position{0,1}); //vers l Nord
     }
 
-    SUBCASE("Tourner à droite") {
+    SUBCASE("Tourner ï¿½ droite") {
         rob.tounerADroite();
         CHECK(rob.direction() == 'E');
     }
 
-    SUBCASE("Tourner à gauche") {
+    SUBCASE("Tourner ï¿½ gauche") {
         rob.tounerAGauche();
         CHECK(rob.direction() == 'W');
     }
@@ -44,7 +44,8 @@ int main(int argc, char** argv) {
     doctest::Context context;
     int res = context.run();
 
-    system("pause");  // Pause pour garder la fenêtre ouverte sur Windows
+    system("pause");  // Pause pour garder la fenï¿½tre ouverte sur Windows
     return res;
 }
+
 
