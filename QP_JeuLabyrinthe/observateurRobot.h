@@ -12,15 +12,15 @@ public:
 
 
 };
-
 class observateurRobot : public observateur
 {
-    int d_nombreDeplacement;
 public:
-    observateurRobot();
     void notifie(const robot& r) const override;
     int nombreDeplacement() const;
+private:
+    int d_nombreDeplacement;
 
 };
+
 
 #endif // OBSERVATEURROBOT_H
