@@ -27,7 +27,7 @@ TEST_CASE("la methode redimensionne est correcte")
    REQUIRE_EQ(t.hauteur(),  hauteur);
    REQUIRE_EQ(t.largeur(),  largeur);
   }
-  SUBCASE("La case de een reinitialisee")
+  SUBCASE("La case de depart est bien reinitialisee")
   {
       REQUIRE_EQ(t.caseDepart(), positionInitiale);
   }
@@ -90,7 +90,7 @@ TEST_CASE("La méthode estCaseValide est correcte")
     }
    }
 }
-TEST_CASE("La méthode ajouteCaseVide est correcte")
+TEST_CASE("La méthode ajouteCase est correcte")
 {
     int hauteur{7}, largeur{20};
     terrain tr{};
@@ -98,34 +98,18 @@ TEST_CASE("La méthode ajouteCaseVide est correcte")
     SUBCASE("La case vide n'est pas ajoutee si la case n'est pas valide")
     {
       int ligne{hauteur}, colonne{largeur};
-      tr.ajouteCaseVide(ligne, colonne);
+      TypeCase type{TypeCase::VIDE};
+      tr.ajouteCase(ligne, colonne, type);
       WARN("Indice hors bornes dans ajouteCaseVide");
     }
-    SUBCASE("La case vide est ajoutee si la case est valide")
+    SUBCASE("La case est ajoutee si la case est valide")
     {
       int ligne{hauteur-1}, colonne{largeur-1};
-      tr.ajouteCaseVide(ligne, colonne);
-      REQUIRE_EQ((tr.tableau())[ligne][colonne], '.');
+      TypeCase type{TypeCase::VIDE};
+      tr.ajouteCase(ligne, colonne, type);
+      REQUIRE_EQ((tr.tableau())[ligne][colonne], TypeCase::VIDE);
     }
 
-}
-TEST_CASE("La méthode ajouteMur est correcte")
-{
-  int hauteur{7}, largeur{20};
-    terrain tr{};
-    tr.redimensionne(hauteur, largeur);
-    SUBCASE("La case vide n'est pas ajoutee si la case n'est pas valide")
-    {
-      int ligne{hauteur}, colonne{largeur};
-      tr.ajouteCaseVide(ligne, colonne);
-      WARN("Indice hors bornes dans ajouteCaseVide");
-    }
-    SUBCASE("La case vide est ajoutee si la case est valide")
-    {
-      int ligne{hauteur-1}, colonne{largeur-1};
-      tr.ajouteCaseVide(ligne, colonne);
-      REQUIRE_EQ((tr.tableau())[ligne][colonne], 'x');
-    }
 }
 TEST_CASE("La methode modifieCaseDepart est correcte")
 {
@@ -145,8 +129,8 @@ TEST_CASE("La methode modifieCaseDepart est correcte")
   SUBCASE("Le depart n' est pas modifie s'il y'a un mur a la position nouveau depart")
   {
     tr.redimensionne(hauteur, largeur);
-    (tr.tableau())[nouveauDepart.ligne][nouveauDepart.colonne] = 'x';
-     REQUIRE_FALSE(tr.caseDepart()==nouveauDepart);
+    tr.ajouteCase(nouveauDepart.ligne, nouveauDepart.colonne, TypeCase::MUR);
+    REQUIRE_FALSE(tr.caseDepart()==nouveauDepart);
   }
 }
 TEST_CASE("La methode modifieCaseArrivee est correcte")
@@ -167,8 +151,8 @@ TEST_CASE("La methode modifieCaseArrivee est correcte")
   SUBCASE("L'arrivee n' est pas modifie s'il y'a un mur a la position nouvelleArrivee")
   {
     tr.redimensionne(hauteur, largeur);
-    (tr.tableau())[nouvelleArrivee.ligne][nouvelleArrivee.colonne] = 'x';
-     REQUIRE_FALSE(tr.caseArrivee()==nouvelleArrivee);
+    tr.ajouteCase(nouvelleArrivee.ligne, nouvelleArrivee.colonne, TypeCase::MUR);
+    REQUIRE_FALSE(tr.caseArrivee()==nouvelleArrivee);
   }
 }
 int main(int argc, char** argv) {

@@ -6,7 +6,7 @@ position terrain::caseDepart() const {return d_caseDepart;}
 
 position terrain::caseArrivee() const {return d_caseArrivee ;}
 
-vector<vector<char>> terrain::tableau() const {return d_tableau;}
+const vector<vector<TypeCase>>& terrain::tableau() const {return d_tableau;}
 
 int terrain::hauteur() const {return d_tableau.size();}
 
@@ -15,7 +15,7 @@ int terrain::largeur() const {return !d_tableau.empty() ? d_tableau[0].size() : 
 void terrain::redimensionne(int hauteur, int largeur)
 {
     d_tableau.clear();
-    d_tableau.resize(hauteur, std::vector<char>(largeur, '.'));
+    d_tableau.resize(hauteur, std::vector<TypeCase>(largeur, TypeCase::VIDE));
     d_caseDepart = {-1, -1};
     d_caseArrivee = {-1, -1};
 }
@@ -26,24 +26,14 @@ bool terrain::estCaseValide(int ligne, int colonne) const
                    (colonne >= 0 && colonne < largeur()) ? true : false;
 }
 
-void terrain::ajouteCaseVide(int ligne, int colonne)
+void terrain::ajouteCase(int ligne, int colonne, TypeCase type)
 {
   if(!estCaseValide(ligne, colonne))
   {
     throw std::out_of_range("Indice hors bornes dans ajouteCaseVide");
   }
-  d_tableau[ligne][colonne] = '.';
+  d_tableau[ligne][colonne] = type;
 }
-
-void terrain::ajouteMur(int ligne, int colonne)
-{
-  if(!estCaseValide(ligne, colonne))
-  {
-    throw std::out_of_range("Indice hors bornes dans ajouteCaseVide");
-  }
-  d_tableau[ligne][colonne] = 'x';
-}
-
 void terrain::modifieCaseDepart(position& Depart)
 {
   if (d_tableau.empty()) {
@@ -53,10 +43,11 @@ void terrain::modifieCaseDepart(position& Depart)
     {
         throw std::out_of_range("Depart hors bornes");
     }
-    if (d_tableau[Depart.ligne][Depart.colonne] == 'x') {
+    if (d_tableau[Depart.ligne][Depart.colonne] == TypeCase::MUR) {
         throw std::runtime_error("Depart sur un mur, interdit");
     }
    d_caseDepart = Depart;
+   d_tableau[Depart.ligne][Depart.colonne] = TypeCase::DEPART;
 }
 
 void terrain::modifieCaseArrivee(position& Arrivee)
@@ -68,8 +59,9 @@ void terrain::modifieCaseArrivee(position& Arrivee)
     {
         throw std::out_of_range("Depart hors bornes");
     }
-    if (d_tableau[Arrivee.ligne][Arrivee.colonne] == 'x') {
+    if (d_tableau[Arrivee.ligne][Arrivee.colonne] == TypeCase::MUR) {
         throw std::runtime_error("Arrivee sur un mur, interdit");
     }
    d_caseArrivee = Arrivee;
+   d_tableau[Arrivee.ligne][Arrivee.colonne] = TypeCase::ARRIVEE;
 }
