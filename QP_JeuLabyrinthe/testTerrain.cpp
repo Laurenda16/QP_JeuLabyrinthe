@@ -95,7 +95,7 @@ TEST_CASE("La méthode ajouteCase est correcte")
     int hauteur{7}, largeur{20};
     terrain tr{};
     tr.redimensionne(hauteur, largeur);
-    SUBCASE("La case vide n'est pas ajoutee si la case n'est pas valide")
+    SUBCASE("La case n'est pas ajoutee si la case n'est pas valide")
     {
       int ligne{hauteur}, colonne{largeur};
       TypeCase type{TypeCase::VIDE};
