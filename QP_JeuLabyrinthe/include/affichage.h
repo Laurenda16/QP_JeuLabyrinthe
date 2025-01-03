@@ -3,40 +3,40 @@
 #include "terrain.h"
 class affichage {
 public:
-    virtual void afficher(const terrain& t) const = 0;
+    virtual void afficher(std::ostream& ost, const terrain& t) const = 0;
     virtual ~affichage() = default;
 };
 class affichageSimple : public affichage {
 public:
-    void afficher(const terrain& t) const{
+    void afficher(std::ostream& ost, const terrain& t) const{
         const auto& tableau = t.tableau();
         for (const auto& ligne : tableau) {
             for (TypeCase caseTerrain : ligne) {
                 switch (caseTerrain) {
-                    case TypeCase::MUR:    std::cout << 'x'; break;
-                    case TypeCase::VIDE:   std::cout << '.'; break;
-                    case TypeCase::DEPART: std::cout << 'D'; break;
-                    case TypeCase::ARRIVEE: std::cout << 'A'; break;
+                    case TypeCase::MUR:    ost << 'x'; break;
+                    case TypeCase::VIDE:   ost << '.'; break;
+                    case TypeCase::DEPART: ost << 'D'; break;
+                    case TypeCase::ARRIVEE: ost << 'A'; break;
                 }
             }
-            std::cout << "\n";
+            ost << "\n";
         }
     }
 };
 class affichageAmeliore : public affichage {
 public:
-    void afficher(const terrain& t) const override {
+    void afficher(std::ostream& ost,const terrain& t) const override {
         const auto& tableau = t.tableau();
         for (const auto& ligne : tableau) {
             for (TypeCase caseTerrain : ligne) {
                 switch (caseTerrain) {
-                    case TypeCase::MUR:    std::cout << '#'; break;
-                    case TypeCase::VIDE:   std::cout << ' '; break;
-                    case TypeCase::DEPART: std::cout << 'S'; break;
-                    case TypeCase::ARRIVEE: std::cout << 'E'; break;
+                    case TypeCase::MUR:    ost << "+"; break;
+                    case TypeCase::VIDE:   ost << '.'; break;
+                    case TypeCase::DEPART: ost << "#E"; break;
+                    case TypeCase::ARRIVEE: ost << "#S"; break;
                 }
             }
-            std::cout << "\n";
+            ost<< "\n";
         }
     }
 };
