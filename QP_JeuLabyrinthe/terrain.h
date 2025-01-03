@@ -2,6 +2,7 @@
 #define TERRAIN_H
 #include<iostream>
 #include<vector>
+class affichage;
 enum class TypeCase {
     MUR,
     VIDE,
@@ -24,9 +25,9 @@ class terrain
            void redimensionne(int hauteur, int largeur);
            bool estCaseValide(int ligne, int colonne) const;
            void ajouteCase(int ligne, int colonne, TypeCase type);
-           void modifieCaseDepart(position& Depart);
-           void modifieCaseArrivee(position& Arrivee);
-           void imprimeSur(const string& nomFichier) const;
+           void definitCaseDepart(position& Depart);
+           void definitCaseArrivee(position& Arrivee);
+           void imprimeSur(const string& nomFichier, affichage& Aff) const;
            void litDepuis(const string& nomFichier);
  private:
         vector<vector<TypeCase>> d_tableau;

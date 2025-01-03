@@ -1,6 +1,8 @@
 #include "terrain.h"
-terrain::terrain(): d_caseDepart{-1, -1},
-d_caseArrivee{-1, -1}, d_tableau{} {}
+#include <fstream>
+#include"affichage.h"
+terrain::terrain(): d_tableau{}, d_caseDepart{-1, -1},
+d_caseArrivee{-1, -1} {}
 
 position terrain::caseDepart() const {return d_caseDepart;}
 
@@ -33,8 +35,16 @@ void terrain::ajouteCase(int ligne, int colonne, TypeCase type)
     throw std::out_of_range("Indice hors bornes dans ajouteCaseVide");
   }
   d_tableau[ligne][colonne] = type;
+  if(type == TypeCase::DEPART)
+  {
+    d_caseDepart = {ligne, colonne};
+  }
+  if(type == TypeCase::ARRIVEE)
+  {
+    d_caseArrivee = {ligne, colonne};
+  }
 }
-void terrain::modifieCaseDepart(position& Depart)
+void terrain::definitCaseDepart(position& Depart)
 {
   if (d_tableau.empty()) {
         throw std::runtime_error("Terrain vide, impossible de definir un depart");
@@ -50,7 +60,7 @@ void terrain::modifieCaseDepart(position& Depart)
    d_tableau[Depart.ligne][Depart.colonne] = TypeCase::DEPART;
 }
 
-void terrain::modifieCaseArrivee(position& Arrivee)
+void terrain::definitCaseArrivee(position& Arrivee)
 {
   if (d_tableau.empty()) {
         throw std::runtime_error("Terrain vide, impossible de definir un depart");
@@ -64,4 +74,12 @@ void terrain::modifieCaseArrivee(position& Arrivee)
     }
    d_caseArrivee = Arrivee;
    d_tableau[Arrivee.ligne][Arrivee.colonne] = TypeCase::ARRIVEE;
+}
+void terrain::imprimeSur(const string& nomFichier, affichage& Aff) const
+{
+    std::ofstream fichier(nomFichier);
+    if (!fichier.is_open()) {
+        throw std::runtime_error("Impossible d'ouvrir le fichier.");
+    }
+    Aff.afficher(fichier, *this);
 }
