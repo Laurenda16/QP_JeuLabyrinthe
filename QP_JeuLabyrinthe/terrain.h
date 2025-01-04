@@ -22,9 +22,10 @@ class terrain
            const vector<vector<TypeCase>>& tableau() const;
            int hauteur() const;
            int largeur() const;
+           void reinitialise();
            void redimensionne(int hauteur, int largeur);
-           bool estCaseValide(int ligne, int colonne) const;
-           void ajouteCase(int ligne, int colonne, TypeCase type);
+           bool estCaseValide(const position& Case) const;
+           void modifieCase(const position& Case, TypeCase type);
            void definitCaseDepart(position& Depart);
            void definitCaseArrivee(position& Arrivee);
            void imprimeSur(const string& nomFichier, affichage& Aff) const;

@@ -15,27 +15,46 @@ TEST_CASE("Le terrain est bien construit")
       REQUIRE_EQ(tr.tableau().size(), 0);
   }
 }
+TEST_CASE("La methode reinitialise est correcte")
+{
+   terrain t{};
+   int hauteur{10}, largeur{10};
+   t.redimensionne(hauteur, largeur);
+   t.reinitialise();
+   SUBCASE(" verifier si le terrain est vide")
+   {
+     REQUIRE_EQ(t.hauteur(), 0);
+     REQUIRE_EQ(t.largeur(), 0);
+   }
+   SUBCASE("verifier si les cases speciaux ne sont plus definies")
+   {
+     position nonDefinie{-1, -1};
+     REQUIRE_EQ(t.caseDepart(), nonDefinie);
+     REQUIRE_EQ(t.caseArrivee(), nonDefinie);
+   }
+}
 TEST_CASE("la methode redimensionne est correcte")
 {
   terrain t{};
-  int largeur{10}, hauteur{10};
-  position positionInitiale{-1, -1};
+  int hauteur{10}, largeur{10};
   t.redimensionne(10, 10);
+  position depart{0, 0}; // case depart par defaut
+  position arrivee{hauteur-1, largeur-1}; // case arrivee par defaut
   SUBCASE("La taille du terrain est bien reinitialisee")
   {
    REQUIRE_EQ(t.hauteur(),  hauteur);
    REQUIRE_EQ(t.largeur(),  largeur);
   }
-  SUBCASE("La case de depart est bien reinitialisee")
+ SUBCASE("La case de depart est bien definie ")
   {
-      REQUIRE_EQ(t.caseDepart(), positionInitiale);
+      REQUIRE_EQ(t.caseDepart(), depart);
   }
-  SUBCASE("La case d'arrivee est bien reinitialisee")
+  SUBCASE("La case d'arrivee est bien definie")
   {
-      REQUIRE_EQ(t.caseArrivee(), positionInitiale);
+      REQUIRE_EQ(t.caseArrivee(), arrivee);
   }
 }
-TEST_CASE("La méthode largeur est correcte")
+TEST_CASE("La methode largeur est correcte")
 {
    terrain tr{};
    SUBCASE("Le terrain est vide")
@@ -49,7 +68,7 @@ TEST_CASE("La méthode largeur est correcte")
        REQUIRE_EQ(tr.largeur(),largeur);
    }
 }
-TEST_CASE("La méthode estCaseValide est correcte")
+TEST_CASE("La methode estCaseValide est correcte")
 {
     terrain tr{};
     int hauteur{7}, largeur{20};
@@ -57,7 +76,8 @@ TEST_CASE("La méthode estCaseValide est correcte")
    SUBCASE("La case est valide")
    {
      int ligne{hauteur-1 }, colonne{largeur-1};
-     bool valide = tr.estCaseValide(ligne, colonne);
+     position Case{ligne, colonne};
+     bool valide = tr.estCaseValide(Case);
      REQUIRE_EQ(valide, true);
    }
    SUBCASE("La case n'est pas valide")
@@ -66,66 +86,72 @@ TEST_CASE("La méthode estCaseValide est correcte")
     SUBCASE("si la ligne est egale à la hauteur")
     {
        int ligne{hauteur}, colonne{largeur-1};
-       bool valide = tr.estCaseValide(ligne, colonne);
+       position Case{ligne, colonne};
+       bool valide = tr.estCaseValide(Case);
        REQUIRE_EQ(valide, false);
     }
     SUBCASE(" si la ligne est superieure à la hauteur")
     {
        int ligne{hauteur+1}, colonne{largeur-1};
-       bool valide = tr.estCaseValide(ligne, colonne);
+       position Case{ligne, colonne};
+       bool valide = tr.estCaseValide(Case);
        REQUIRE_EQ(valide, false);
     }
     SUBCASE("si la colonne est egale à la largeur")
     {
      int ligne{hauteur-1 }, colonne{largeur};
-     bool valide = tr.estCaseValide(ligne, colonne);
+     position Case{ligne, colonne};
+     bool valide = tr.estCaseValide(Case);
      REQUIRE_EQ(valide, false);
     }
     SUBCASE("si la colonne est superieure à la largeur")
     {
      int ligne{hauteur-1 }, colonne{largeur+1};
-     bool valide = tr.estCaseValide(ligne, colonne);
+     position Case{ligne, colonne};
+     bool valide = tr.estCaseValide(Case);
      REQUIRE_EQ(valide, false);
     }
    }
 }
-TEST_CASE("La methode ajouteCase est correcte")
+TEST_CASE("La methode modifieCase est correcte")
 {
     int hauteur{7}, largeur{20};
     terrain tr{};
     tr.redimensionne(hauteur, largeur);
-    /**
-    SUBCASE("La case n'est pas ajoutee si la case n'est pas valide")
+
+    SUBCASE("La case n'est pas modifiee si la case n'est pas valide")
     {
       int ligne{hauteur}, colonne{largeur};
+      position Case{ligne, colonne};
       TypeCase type{TypeCase::VIDE};
-      tr.ajouteCase(ligne, colonne, type);
-      WARN("Indice hors bornes dans ajouteCaseVide");
+      CHECK_THROWS_AS(tr.modifieCase(Case, type), std::out_of_range);
     }
-    */
-    SUBCASE("La case est ajoutee si la case est valide")
+    SUBCASE("La case est modifiee si la case est valide")
     {
       int ligne{hauteur-1}, colonne{largeur-1};
+      position Case{ligne, colonne};
       TypeCase type{TypeCase::MUR};
-      tr.ajouteCase(ligne, colonne, type);
-      REQUIRE_EQ((tr.tableau())[ligne][colonne], TypeCase::MUR);
+      tr.modifieCase(Case, type);
+      REQUIRE_EQ((tr.tableau())[Case.ligne][Case.colonne], TypeCase::MUR);
     }
-    SUBCASE("Si la case ajoutee est un depart, le depart est mis a jour")
+    SUBCASE("Si la case modifiee est un depart, le depart est mis a jour")
     {
       int ligne{hauteur-2}, colonne{largeur-2};
+      position Case{ligne, colonne};
       TypeCase type{TypeCase::DEPART};
-      tr.ajouteCase(ligne, colonne, type);
+      tr.modifieCase(Case, type);
       position nouveauDepart{ligne, colonne};
-      REQUIRE_EQ((tr.tableau())[ligne][colonne], TypeCase::DEPART);
+      REQUIRE_EQ((tr.tableau())[Case.ligne][Case.colonne], TypeCase::DEPART);
       REQUIRE_EQ(tr.caseDepart(), nouveauDepart);
     }
-    SUBCASE("Si la case ajouitee est une arrivee, l'arrivee est mise a jour")
+    SUBCASE("Si la case modifiee est une arrivee, l'arrivee est mise a jour")
     {
       int ligne{hauteur-3}, colonne{largeur-3};
+      position Case{ligne, colonne};
       TypeCase type{TypeCase::ARRIVEE};
-      tr.ajouteCase(ligne, colonne, type);
+      tr.modifieCase(Case, type);
       position nouvelleArrivee{ligne, colonne};
-      REQUIRE_EQ((tr.tableau())[ligne][colonne], TypeCase::ARRIVEE);
+      REQUIRE_EQ((tr.tableau())[Case.ligne][Case.colonne], TypeCase::ARRIVEE);
       REQUIRE_EQ(tr.caseArrivee(), nouvelleArrivee);
     }
 
@@ -148,8 +174,8 @@ TEST_CASE("La methode definitCaseDepart est correcte")
   SUBCASE("Le depart n' est pas modifie s'il y'a un mur a la position nouveau depart")
   {
     tr.redimensionne(hauteur, largeur);
-    tr.ajouteCase(nouveauDepart.ligne, nouveauDepart.colonne, TypeCase::MUR);
-    REQUIRE_FALSE(tr.caseDepart()==nouveauDepart);
+    tr.modifieCase(nouveauDepart, TypeCase::MUR);
+    REQUIRE_FALSE(tr.caseDepart()== nouveauDepart);
   }
 }
 TEST_CASE("La methode definitCaseArrivee est correcte")
@@ -170,7 +196,7 @@ TEST_CASE("La methode definitCaseArrivee est correcte")
   SUBCASE("L'arrivee n' est pas modifie s'il y'a un mur a la position nouvelleArrivee")
   {
     tr.redimensionne(hauteur, largeur);
-    tr.ajouteCase(nouvelleArrivee.ligne, nouvelleArrivee.colonne, TypeCase::MUR);
+    tr.modifieCase(nouvelleArrivee, TypeCase::MUR);
     REQUIRE_FALSE(tr.caseArrivee()==nouvelleArrivee);
   }
 }
