@@ -1,6 +1,6 @@
 #include "terrain.h"
 #include <fstream>
-#include"affichage.h"
+#include "include/affichage.h"
 terrain::terrain(): d_tableau{}, d_caseDepart{-1, -1},
 d_caseArrivee{-1, -1} {}
 
