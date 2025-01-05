@@ -1,6 +1,6 @@
 #ifndef AFFICHAGE_H
 #define AFFICHAGE_H
-#include"terrain.h"
+#include "terrain.h"
 class affichage {
 public:
     virtual void affiche(std::ostream& ost, const terrain& t) const = 0;
