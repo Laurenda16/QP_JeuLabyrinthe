@@ -3,12 +3,12 @@
 #include "terrain.h"
 class affichage {
 public:
-    virtual void afficher(std::ostream& ost, const terrain& t) const = 0;
+    virtual void affiche(std::ostream& ost, const terrain& t) const = 0;
     virtual ~affichage() = default;
 };
 class affichageSimple : public affichage {
 public:
-    void afficher(std::ostream& ost, const terrain& t) const{
+    void affiche(std::ostream& ost, const terrain& t) const{
         const auto& tableau = t.tableau();
         for (const auto& ligne : tableau) {
             for (TypeCase caseTerrain : ligne) {
@@ -23,9 +23,9 @@ public:
         }
     }
 };
-class affichageAmeliore : public affichage {
+class affichageAmelioree : public affichage {
 public:
-    void afficher(std::ostream& ost,const terrain& t) const override {
+    void affiche(std::ostream& ost,const terrain& t) const override {
         const auto& tableau = t.tableau();
         for (const auto& ligne : tableau) {
             for (TypeCase caseTerrain : ligne) {

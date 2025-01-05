@@ -33,5 +33,6 @@ class terrain
  private:
         vector<vector<TypeCase>> d_tableau;
         position d_caseDepart, d_caseArrivee;//{-1, -1},{-1, -1} si tableau vide
+        void verifieIndiceValide(const position& pos) const;
 };
 #endif // TERRAIN_H
