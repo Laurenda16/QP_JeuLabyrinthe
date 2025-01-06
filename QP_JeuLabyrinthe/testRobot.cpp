@@ -25,7 +25,8 @@ TEST_CASE("Test robot mouvement et détection d'obstacle") {
 
     // Déplacer vers un obstacle
     r.avanceUneCase();  // L'intervalle est une case non définie ici
-    CHECK(r.detecterObstacle() == true);  // Obstacle détecté
+    CHECK(r.detecterObstacle() == true);  //obstacle detecte
+
 }
 
 TEST_CASE("Test robot orientation") {
