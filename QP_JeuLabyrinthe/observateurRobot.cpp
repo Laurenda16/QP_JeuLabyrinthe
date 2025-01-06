@@ -1,19 +1,19 @@
 #include <istream>
-#include <ostream>
+#include <iostream>
 #include "observateurRobot.h"
 
+observateurRobot::observateurRobot():
+    d_nombreDeplacement{0}
+{}
 
+void observateurRobot::notifier(int x, int y, char direction) {
+    d_nombreDeplacement++;
+    std::cout << "Déplacement " << d_nombreDeplacement << ": Position (" << x << ", " << y << ") Direction: " << direction << std::endl;
+}
 
-
- void observateurRobot::notifier(int x, int y, char direction)
-  {
-     // std::cout <<"la postionx "<<x<<"la position y "<<y<< "la direction"<< direction;
-
-  }
-int observateurRobot::nombreDeplacement() const
-{
-
+int observateurRobot::nombreDeplacement() const {
     return d_nombreDeplacement;
 }
+
 
 

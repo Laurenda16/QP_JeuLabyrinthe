@@ -133,3 +133,102 @@
 1736083746 source:c:\users\abdou\desktop\l3miage2425\qualitedeprogrammation\qp_jeulabyrinthe\qp_jeulabyrinthe\testrobot.cpp
 	"doctest.h"
 
+1736168967 source:c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\main.cpp
+	<iostream>
+
+1736181152 source:c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.cpp
+	<istream>
+	<iostream>
+	"observateurRobot.h"
+
+1736177193 c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.h
+
+1736168967 source:c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.cpp
+	"terrain.h"
+	"robot.h"
+
+1736173749 c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\terrain.h
+	<iostream>
+	<vector>
+
+1736180800 c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.h
+	<memory>
+	<vector>
+	"affichage.h"
+	"terrain.h"
+	"observateurRobot.h"
+
+1736182065 source:c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\terrain.cpp
+	"terrain.h"
+	<fstream>
+	"affichage.h"
+
+1736168967 source:c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\testmain.cpp
+	"doctest.h"
+
+1736168967 c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\doctest.h
+	<signal.h>
+	<ciso646>
+	<cstddef>
+	<ostream>
+	<istream>
+	<type_traits>
+	"doctest_fwd.h"
+	<ctime>
+	<cmath>
+	<climits>
+	<math.h>
+	<new>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<limits>
+	<utility>
+	<fstream>
+	<sstream>
+	<iostream>
+	<algorithm>
+	<iomanip>
+	<vector>
+	<atomic>
+	<mutex>
+	<set>
+	<map>
+	<unordered_set>
+	<exception>
+	<stdexcept>
+	<csignal>
+	<cfloat>
+	<cctype>
+	<cstdint>
+	<string>
+	<sys/types.h>
+	<unistd.h>
+	<sys/sysctl.h>
+	<AfxWin.h>
+	<windows.h>
+	<io.h>
+	<sys/time.h>
+	<unistd.h>
+
+1736168967 source:c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\testobservateurrobot.cpp
+	"doctest.h"
+
+1736168967 source:c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\testrobot.cpp
+	"doctest.h"
+
+1736168967 source:c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\testterrain.cpp
+	"doctest.h"
+	"terrain.h"
+
+1736169988 source:c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\goto_xy_windows.cpp
+	<windows.h>
+	"goto_xy_windows.h"
+
+1736169988 c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\goto_xy_windows.h
+
+1736182000 c:\users\falld\onedrive\bureau\l3_miage\qp_jeulabyrinthe\qp_jeulabyrinthe\affichage.h
+	"robot.h"
+	"terrain.h"
+	"goto_xy_windows.h"
+

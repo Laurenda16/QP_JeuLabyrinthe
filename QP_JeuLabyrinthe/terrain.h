@@ -9,8 +9,9 @@ enum class TypeCase {
     DEPART,
     ARRIVEE
 };
-struct  position{int ligne, colonne;
-   bool operator==(const position& p) const {return p.ligne == ligne && p.colonne == colonne;}
+struct  position{
+    int ligne, colonne;
+    bool operator==(const position& p) const {return p.ligne == ligne && p.colonne == colonne;}
 };
 using namespace std;
 class terrain

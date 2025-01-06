@@ -1,6 +1,6 @@
 #include "terrain.h"
 #include <fstream>
-#include"affichage.h"
+#include "affichage.h"
 terrain::terrain(): d_tableau{}, d_caseDepart{-1, -1},
 d_caseArrivee{-1, -1} {}
 
@@ -51,11 +51,11 @@ void terrain::modifieCase(const position& Case, TypeCase type)
   d_tableau[Case.ligne][Case.colonne] = type;
   if(type == TypeCase::DEPART)
   {
-    d_caseDepart = {Case.ligne, Case.colonne};
+    d_caseDepart =Case ;// {Case.ligne, Case.colonne};
   }
   if(type == TypeCase::ARRIVEE)
   {
-    d_caseArrivee = {Case.ligne, Case.colonne};
+    d_caseArrivee = Case ;//{Case.ligne, Case.colonne};
   }
 }
 void terrain::definitCaseDepart(position& Depart)
@@ -83,7 +83,7 @@ void terrain::imprimeSur(const string& nomFichier, affichage& Aff) const
     if (!fichier.is_open()) {
         throw std::runtime_error("Impossible d'ouvrir le fichier.");
     }
-    Aff.affiche(fichier, *this);
+   // Aff.affiche(fichier, *this);
 }
 void terrain::litDepuis(const std::string& nomFichier)
 {
@@ -98,9 +98,16 @@ void terrain::litDepuis(const std::string& nomFichier)
 
     std::string ligne;
     int ligneIndex = 0;
+    int largeurLigne = -1;
 
     while (std::getline(fichier, ligne)) {
         std::vector<TypeCase> ligneTerrain;
+        // Vérifier si la longueur de la ligne est cohérente
+        if (largeurLigne == -1) {
+            largeurLigne = ligne.size();
+        } else if (ligne.size() != largeurLigne) {
+            throw std::runtime_error("Lignes de taille incohérente dans le fichier.");
+        }
         for (int colonneIndex = 0; colonneIndex < static_cast<int>(ligne.size()); ++colonneIndex) {
             char c = ligne[colonneIndex];
             switch (c) {
