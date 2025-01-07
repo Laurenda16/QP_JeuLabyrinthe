@@ -47,6 +47,7 @@ void afficherTerrainAvecRobot(const terrain& t, const robot& r) {
     affichageSimple affichage;
     affichage.affiche(std::cout, t, r); // Affichage du terrain avec le robot à sa position
 }
+*/
 
 /*
 class affichageSimple : public affichage {
