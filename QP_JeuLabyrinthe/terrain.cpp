@@ -83,7 +83,7 @@ void terrain::imprimeSur(const string& nomFichier, affichage& Aff) const
     if (!fichier.is_open()) {
         throw std::runtime_error("Impossible d'ouvrir le fichier.");
     }
-   // Aff.affiche(fichier, *this);
+   Aff.afficheTerrain(fichier, *this);
 }
 void terrain::litDepuis(const std::string& nomFichier)
 {
