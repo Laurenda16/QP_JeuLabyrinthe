@@ -1,20 +1,21 @@
 #ifndef OBSERVATEURROBOT_H
 #define OBSERVATEURROBOT_H
+class robot;
 
-class observateur {
+class observateur
+{
 public:
     virtual ~observateur() = default;
-    virtual void notifier(int x, int y, char direction) = 0;
+    virtual void notifie(const robot& r) const = 0;
+
+
 };
-
-class observateurRobot : public observateur {
+class observateurRobot : public observateur
+{
 public:
-    observateurRobot();
-    void notifier(int x, int y, char direction) override;
-    int nombreDeplacement() const;
+    string message() const ;
+    void notifie(const robot& r) const override;
 
-private:
-    int d_nombreDeplacement{0};
 };
 
 #endif // OBSERVATEURROBOT_H
