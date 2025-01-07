@@ -1,9 +1,9 @@
 #ifndef AFFICHAGE_H
 #define AFFICHAGE_H
-#include "robot.h"
 #include "terrain.h"
 #include "goto_xy_windows.h"
-/*
+#include "robot.h"
+class terrain;
 
 class affichage {
 public:
@@ -34,7 +34,7 @@ public:
         }
     }
 };
-*/
+
 /*
 void afficherTerrainAvecRobot(const terrain& t, const robot& r) {
     // Efface l'écran (cela dépend du système, ici pour Windows)
@@ -47,7 +47,7 @@ void afficherTerrainAvecRobot(const terrain& t, const robot& r) {
     affichageSimple affichage;
     affichage.affiche(std::cout, t, r); // Affichage du terrain avec le robot à sa position
 }
-*/
+
 /*
 class affichageSimple : public affichage {
 public:

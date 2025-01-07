@@ -2,9 +2,9 @@
 #define ROBOT_H
 #include <memory>
 #include <vector>
+#include "affichage.h"
 #include "terrain.h"
 #include "observateurRobot.h"
-class affichage;
 
 class robot {
 public:
