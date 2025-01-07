@@ -51,6 +51,8 @@ int main()
     r.avanceUneCase();
     affichageSimple aff;
     t.imprimeSur("terrain.txt", aff);
+    //r.algorithmDeMainDroite();
+    r.algorithmeDePledge();
 
     //r.tournerAGauche();
     //r.tournerADroite();

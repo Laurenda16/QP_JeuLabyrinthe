@@ -1,6 +1,10 @@
-#include <istream>
 #include <iostream>
 #include "observateurRobot.h"
+#include"robot.h"
+
+class robot;
+using namespace std;
+class observateurRobot;
 
 /*observateurRobot::observateurRobot():
     d_nombreDeplacement{0}
@@ -18,17 +22,18 @@ int observateurRobot::nombreDeplacement() const {
 
 
 
-std::string observateurRobot::message(const robot& r) const
+string observateurRobot::message(robot& r) const
 {
-     return "Le robot est en position x : " + std::to_string(r.positionXY().colonne)
-            + " position y: " + std::to_string(r.positionXY().ligne)
+     return "Le robot est en position x : " + to_string(r.positionXY().colonne)
+            + " position y: " + to_string(r.positionXY().ligne)
             + "direction: " + r.direction() + '\n';
 
 }
 
 
-void observateurRobot::notifie(const robot& r) const
+void observateurRobot::notifie(robot& r) const
 {
-   std::cout << message(r);
+   cout<<message(r);
 
 }
+

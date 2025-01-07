@@ -237,7 +237,7 @@
 	"goto_xy_windows.h"
 	"robot.h"
 
-1736272714 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\main.cpp
+1736282348 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\main.cpp
 	<iostream>
 	<cstdlib>
 	"robot.h"
@@ -245,7 +245,7 @@
 	"observateurRobot.h"
 	"affichage.h"
 
-1736272714 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.h
+1736280523 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.h
 	<memory>
 	<vector>
 	"terrain.h"
@@ -255,26 +255,31 @@
 	<iostream>
 	<vector>
 
-1736272714 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.h
+1736280735 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.h
+	<iostream>
+	<string>
 
-1736272714 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\affichage.h
+1736273695 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\affichage.h
 	"terrain.h"
 	"goto_xy_windows.h"
 	"robot.h"
 
 1736256265 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\goto_xy_windows.h
 
-1736272714 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.cpp
-	<istream>
+1736280735 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.cpp
 	<iostream>
 	"observateurRobot.h"
+	"robot.h"
 
-1736272714 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.cpp
+1736281853 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.cpp
 	"robot.h"
 	"terrain.h"
 	"affichage.h"
+	<cstdlib>
+	"chrono"
+	"thread"
 
-1736272714 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\terrain.cpp
+1736273695 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\terrain.cpp
 	"terrain.h"
 	<fstream>
 	"affichage.h"
