@@ -237,3 +237,100 @@
 	"goto_xy_windows.h"
 	"robot.h"
 
+1736272714 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\main.cpp
+	<iostream>
+	<cstdlib>
+	"robot.h"
+	"terrain.h"
+	"observateurRobot.h"
+	"affichage.h"
+
+1736272714 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.h
+	<memory>
+	<vector>
+	"terrain.h"
+	"observateurRobot.h"
+
+1736256265 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\terrain.h
+	<iostream>
+	<vector>
+
+1736272714 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.h
+
+1736272714 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\affichage.h
+	"terrain.h"
+	"goto_xy_windows.h"
+	"robot.h"
+
+1736256265 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\goto_xy_windows.h
+
+1736272714 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\observateurrobot.cpp
+	<istream>
+	<iostream>
+	"observateurRobot.h"
+
+1736272714 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.cpp
+	"robot.h"
+	"terrain.h"
+	"affichage.h"
+
+1736272714 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\terrain.cpp
+	"terrain.h"
+	<fstream>
+	"affichage.h"
+
+1736272714 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\testmain.cpp
+	"doctest.h"
+
+1736256265 c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\doctest.h
+	<signal.h>
+	<ciso646>
+	<cstddef>
+	<ostream>
+	<istream>
+	<type_traits>
+	"doctest_fwd.h"
+	<ctime>
+	<cmath>
+	<climits>
+	<math.h>
+	<new>
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<limits>
+	<utility>
+	<fstream>
+	<sstream>
+	<iostream>
+	<algorithm>
+	<iomanip>
+	<vector>
+	<atomic>
+	<mutex>
+	<set>
+	<map>
+	<unordered_set>
+	<exception>
+	<stdexcept>
+	<csignal>
+	<cfloat>
+	<cctype>
+	<cstdint>
+	<string>
+	<sys/types.h>
+	<unistd.h>
+	<sys/sysctl.h>
+	<AfxWin.h>
+	<windows.h>
+	<io.h>
+	<sys/time.h>
+	<unistd.h>
+
+1736272714 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\testobservateurrobot.cpp
+	"doctest.h"
+
+1736256265 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\testterrain.cpp
+	"doctest.h"
+	"terrain.h"
+
