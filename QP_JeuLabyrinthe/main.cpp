@@ -9,8 +9,8 @@
 int main()
 {
 
-/*
-   terrain t{};
+
+  /* terrain t{};
    t.redimensionne(7, 20);
     for (int i = 0; i < t.hauteur(); ++i) {
         for (int j = 0; j < t.largeur(); ++j) {
@@ -37,8 +37,8 @@ int main()
     t.definitCaseDepart(depart);
     position arrivee = {5, 18};
     t.definitCaseArrivee(arrivee);
-
 */
+
     terrain t{};
     t.redimensionne(10, 20);
 
@@ -90,9 +90,13 @@ int main()
     t.definitCaseArrivee(arrivee);
 
     robot r{t};
-
+    system("cls");
+    //affichageAmelioree affichage;
+    //affichage.affiche(std::cout, t, *this);
     //affichageSimple Aff;
     //Aff.affiche(std::cout, t);
+    //affichageAmelioree aff;
+    //aff.affiche(std::cout, t, r);
     r.afficherTerrainAvecRobot();
     r.tournerADroite();
     r.avanceUneCase();
@@ -100,8 +104,8 @@ int main()
     r.tournerADroite();
     r.avanceUneCase();
     r.avanceUneCase();
-    affichageSimple aff;
-    t.imprimeSur("terrain.txt", aff);
+    //affichageSimple aff;
+    //t.imprimeSur("terrain.txt", aff);
     r.algorithmDeMainDroite();
     //r.algorithmeDePledge();
 

@@ -77,20 +77,45 @@ void robot::enregistrerObservateur(const observateurRobot& ob) {
     d_observateurs.push_back(ob);
 }
 
+#include <iostream>
+using namespace std;
+
 void robot::afficherTerrainAvecRobot() {
-    // Efface l'écran (cela dépend du système, ici pour Windows)
-    system("cls"); // Si vous êtes sous Windows
-    //system("clear"); // Si vous êtes sous Linux/Unix/Mac
+    system("cls");  // Efface l'écran (Windows)
 
-    // Déplace le curseur à la position du robot (r.positionXY().colonne, r.positionXY().ligne)
-    //goto_xy(positionXY().colonne, positionXY().ligne);
+    // Affichage du menu
+    cout << "Les types de choix :\n"
+         << "A: tableau amélioré;\n"
+         << "B: tableau simple\n";
 
-    affichageSimple affichage;
-    affichage.affiche(std::cout, t, *this); // Affichage du terrain avec le robot à sa position
+    char choix;
+    cout << "Quel est votre choix : ";
+    cin >> choix;
+
+    // Switch pour gérer le choix de l'utilisateur
+    switch(choix) {
+        case 'A': {
+            affichageAmelioree aff;  // Création d'un objet d'affichage amélioré
+            aff.affiche(std::cout, t, *this);  // Affichage du terrain avec robot
+            break;
+        }
+        case 'B': {
+            affichageSimple aff;  // Création d'un objet d'affichage simple
+            aff.affiche(std::cout, t, *this);  // Affichage du terrain avec robot
+            break;
+        }
+        default: {
+            cout << "Choix invalide, affichage par défaut : tableau simple.\n";
+            affichageSimple aff;  // Affichage simple par défaut
+            aff.affiche(std::cout, t, *this);  // Affichage du terrain avec robot
+            break;
+        }
+    }
+     std::this_thread::sleep_for(std::chrono::seconds(80));
 }
 
+
 bool robot::tournerEtAvancerAGauchePossible() {
-    // Vérifier si le robot peut tourner à gauche en détectant un mur ou non
     char ancienneDirection = d_direction;
     tournerAGauche();  // On tourne à gauche
     bool possible = !detecterObstacle();  // Si on peut avancer après avoir tourné à gauche, c'est possible
@@ -114,8 +139,6 @@ void robot::algorithmDeMainDroite() {
         }
         casesParcourues++;
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-
-        notifierObservation();
 
         if (positionXY() == terain().caseArrivee()) {
             std::cout << "Le robot a atteint la sortie !" << "\nNombre de cases parcourues : " << casesParcourues << std::endl;
