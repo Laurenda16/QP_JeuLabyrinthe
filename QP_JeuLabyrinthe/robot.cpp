@@ -99,77 +99,37 @@ bool robot::tournerEtAvancerAGauchePossible() {
 }
 
 void robot::algorithmDeMainDroite() {
+    int casesParcourues = 0;
     while (true) {
-        // Tourner à droite pour vérifier si le chemin est libre
         tournerADroite();
         if (!detecterObstacle()) {
-            // Si pas d'obstacle à droite, avancer dans cette direction
             avanceUneCase();
         } else {
-            // Sinon, revenir à la direction initiale (tourner à gauche)
             tournerAGauche();
             if (!detecterObstacle()) {
-                // Si pas d'obstacle devant, avancer
                 avanceUneCase();
             } else {
-                // Sinon, tourner encore à gauche pour suivre le mur
                 tournerAGauche();
             }
         }
-
-        // Pause pour visualiser les étapes
+        casesParcourues++;
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
-        // Notifier l'observation et afficher la position
         notifierObservation();
 
-        // Vérifier si le robot a atteint la sortie
         if (positionXY() == terain().caseArrivee()) {
-            std::cout << "Le robot a atteint la sortie !" << std::endl;
+            std::cout << "Le robot a atteint la sortie !" << "\nNombre de cases parcourues : " << casesParcourues << std::endl;
             break;
         }
     }
 }
 
-/*void robot::algorithmDeMainDroite() {
-    while (true) {
-        std::cout << "Position actuelle : " << d_pos.ligne << ", " << d_pos.colonne << " | Direction : " << direction << std::endl;
-
-        tournerADroite();
-        std::cout << "Tourne à droite. Nouvelle direction : " << direction << std::endl;
-
-        if (!detecterObstacle()) {
-            std::cout << "Pas d'obstacle. Avance une case." << std::endl;
-            avanceUneCase();
-        } else {
-            tournerAGauche();
-            std::cout << "Obstacle détecté. Tourne à gauche. Nouvelle direction : " << direction << std::endl;
-
-            if (!detecterObstacle()) {
-                avanceUneCase();
-            } else {
-                tournerAGauche();
-                std::cout << "Obstacle toujours présent. Tourne à gauche encore." << std::endl;
-            }
-        }
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-
-        if (positionXY() == terrain().caseArrivee()) {
-            std::cout << "Le robot a atteint la sortie !" << std::endl;
-            break;
-        }
-    }
-}*/
-
 
 void robot::algorithmeDePledge() {
-    int compteurPledge = 0;  // Compteur pour suivre les rotations
+    int compteurPledge = 0;
     int casesParcourues = 0;
 
-    // Tant que le robot n'a pas atteint la case d'arrivée
     while (d_pos.ligne != t.caseArrivee().ligne || d_pos.colonne != t.caseArrivee().colonne) {
-        // Si le compteur est à 0, avance dans la direction globale
         if (compteurPledge == 0) {
             if (!detecterObstacle()) {
                 avanceUneCase();
@@ -178,7 +138,6 @@ void robot::algorithmeDePledge() {
                 compteurPledge--;
             }
         } else {
-            // Sinon, continue à suivre le mur
             if (tournerEtAvancerAGauchePossible()) {
                 tournerAGauche();
                 compteurPledge++;
@@ -193,14 +152,11 @@ void robot::algorithmeDePledge() {
 
         casesParcourues++;
 
-        // Affiche la position actuelle du robot
         afficherTerrainAvecRobot();
 
-        // Pause pour visualiser les étapes (facultatif)
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
 
-    // Le robot a atteint la sortie
     std::cout << "Le robot a atteint la sortie !" << "\nNombre de cases parcourues : " << casesParcourues << std::endl;
 }
 

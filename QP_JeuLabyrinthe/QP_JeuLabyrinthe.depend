@@ -237,7 +237,7 @@
 	"goto_xy_windows.h"
 	"robot.h"
 
-1736282348 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\main.cpp
+1736284399 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\main.cpp
 	<iostream>
 	<cstdlib>
 	"robot.h"
@@ -271,13 +271,14 @@
 	"observateurRobot.h"
 	"robot.h"
 
-1736281853 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.cpp
+1736284348 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\robot.cpp
 	"robot.h"
 	"terrain.h"
 	"affichage.h"
 	<cstdlib>
 	"chrono"
 	"thread"
+	<iostream>
 
 1736273695 source:c:\users\ibrah\qp\qp_jeulabyrinthe\qp_jeulabyrinthe\qp_jeulabyrinthe\terrain.cpp
 	"terrain.h"
