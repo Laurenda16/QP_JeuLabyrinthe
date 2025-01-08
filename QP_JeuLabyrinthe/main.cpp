@@ -6,38 +6,22 @@
 #include "affichage.h"
 
 
+void afficherMenu() {
+    std::cout << "=== Menu ===" << std::endl;
+    std::cout << "1. Algorithme de la main droite" << std::endl;
+    std::cout << "2. Algorithme de Pledge" << std::endl;
+    std::cout << "=== Choix d'affichage ===" << std::endl;
+    std::cout << "A. Affichage Amélioré" << std::endl;
+    std::cout << "B. Affichage Simple" << std::endl;
+    std::cout << "C. Pas d'affichage (Exécution rapide)" << std::endl;
+}
+
+
+
+
 int main()
 {
 
-
-  /* terrain t{};
-   t.redimensionne(7, 20);
-    for (int i = 0; i < t.hauteur(); ++i) {
-        for (int j = 0; j < t.largeur(); ++j) {
-            if (i == 0 || i == t.hauteur() - 1 || j == 0 || j == t.largeur() - 1) {
-                position    Case{i, j};
-                t.modifieCase(Case, TypeCase::MUR);
-            }
-        }
-    }
-
-    for (int j = 8; j <= 11; ++j) {
-        position    Case{1, j};
-        t.modifieCase(Case, TypeCase::MUR);
-    }
-    for (int i = 3; i <= 6; ++i) {
-        position    Case{i, 3};
-        t.modifieCase(Case, TypeCase::MUR);
-    }
-    for (int i = 4; i <= 6; ++i) {
-        position    Case{i, 12};
-        t.modifieCase(Case, TypeCase::MUR);
-    }
-    position depart = {1, 1};
-    t.definitCaseDepart(depart);
-    position arrivee = {5, 18};
-    t.definitCaseArrivee(arrivee);
-*/
 
     terrain t{};
     t.redimensionne(10, 20);
@@ -89,9 +73,12 @@ int main()
     position arrivee = {8, 18};
     t.definitCaseArrivee(arrivee);
 
+    affichageAmelioree aff;
+    t.imprimeSur("terrain.txt", aff);
+
     robot r{t};
     system("cls");
-    //affichageAmelioree affichage;
+    /*//affichageAmelioree affichage;
     //affichage.affiche(std::cout, t, *this);
     //affichageSimple Aff;
     //Aff.affiche(std::cout, t);
@@ -105,8 +92,7 @@ int main()
     r.avanceUneCase();
     r.avanceUneCase();
     //affichageSimple aff;
-    //t.imprimeSur("terrain.txt", aff);
-    r.algorithmDeMainDroite();
+    //r.algorithmDeMainDroite();
     //r.algorithmeDePledge();
 
     //r.tournerAGauche();
@@ -114,7 +100,55 @@ int main()
     //t.imprimeSur("terrain.tx", Aff);
     //terrain t2{};
     //t2.litDepuis("terrain.tx");
-    //Aff.affiche(std::cout, t2,r);
+    //Aff.affiche(std::cout, t2,r);*/
+
+      // Choix de l'affichage
+    int choixAffichage;
+    std::cout << "Choisissez le type d'affichage:\n";
+    std::cout << "1. Affichage simple\n";
+    std::cout << "2. Affichage améliore\n";
+    std::cout << "Entrez votre choix: ";
+    std::cin >> choixAffichage;
+
+    affichage* affichageChoisi = nullptr;
+    if (choixAffichage == 1) {
+        affichageChoisi = new affichageSimple();
+    } else if (choixAffichage == 2) {
+        affichageChoisi = new affichageAmelioree();
+    } else {
+        std::cout << "Choix invalide, affichage simple par défaut." << std::endl;
+        affichageChoisi = new affichageSimple();
+    }
+
+    // Afficher le terrain avec le robot
+    affichageChoisi->affiche(std::cout, t, r);
+
+    // Choix de l'algorithme
+    int choixAlgo;
+    std::cout << "Choisissez l'algorithme à exécuter:\n";
+    std::cout << "1. Algorithme de Pledge\n";
+    std::cout << "2. Algorithme de Main Droite\n";
+    std::cout << "Entrez votre choix: ";
+    std::cin >> choixAlgo;
+
+    if (choixAlgo == 1) {
+        std::cout << "Exécution de l'algorithme de Pledge..." << std::endl;
+        r.algorithmeDePledge(*affichageChoisi);  // Algorithme de Pledge
+      } else if (choixAlgo == 2) {
+        std::cout << "Exécution de l'algorithme de Main Droite..." << std::endl;
+        r.algorithmDeMainDroite(*affichageChoisi);  // Algorithme de Main Droite
+    } else {
+        std::cout << "Choix invalide, aucun algorithme exécuté." << std::endl;
+    }
+
+    // Imprimer le terrain dans un fichier après l'exécution de l'algorithme
+    t.imprimeSur("terrain_final.txt", *affichageChoisi);
+
+    // Libérer la mémoire allouée pour l'affichage
+    delete affichageChoisi;
+
+    // Pause pour que l'utilisateur puisse voir le résultat
+
     system("pause");
     return 0;
 }

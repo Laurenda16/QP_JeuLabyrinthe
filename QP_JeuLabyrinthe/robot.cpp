@@ -37,22 +37,18 @@ void robot::avanceUneCase() {
     else if (d_direction == 'W' && !detecterObstacle()) d_pos.colonne--;
     else if (d_direction == 'N' && !detecterObstacle()) d_pos.ligne--;
     notifierObservation();
-    afficherTerrainAvecRobot();
 }
 
 void robot::tournerAGauche() {
 
     d_direction = (d_direction == 'N') ? 'W' : (d_direction == 'W') ? 'S' : (d_direction == 'S') ? 'E' : 'N';
     notifierObservation();
-    afficherTerrainAvecRobot();
 
 }
 
 void robot::tournerADroite() {
     d_direction = (d_direction == 'N') ? 'E' : (d_direction == 'E') ? 'S' : (d_direction == 'S') ? 'W' : 'N';
     notifierObservation();
-    afficherTerrainAvecRobot();
-
 }
 
 bool robot::detecterObstacle() const {
@@ -77,78 +73,85 @@ void robot::enregistrerObservateur(const observateurRobot& ob) {
     d_observateurs.push_back(ob);
 }
 
-#include <iostream>
-using namespace std;
-
-void robot::afficherTerrainAvecRobot() {
-    system("cls");  // Efface l'écran (Windows)
-
-    // Affichage du menu
-    cout << "Les types de choix :\n"
-         << "A: tableau amélioré;\n"
-         << "B: tableau simple\n";
-
-    char choix;
-    cout << "Quel est votre choix : ";
-    cin >> choix;
-
-    // Switch pour gérer le choix de l'utilisateur
-    switch(choix) {
-        case 'A': {
-            affichageAmelioree aff;  // Création d'un objet d'affichage amélioré
-            aff.affiche(std::cout, t, *this);  // Affichage du terrain avec robot
-            break;
-        }
-        case 'B': {
-            affichageSimple aff;  // Création d'un objet d'affichage simple
-            aff.affiche(std::cout, t, *this);  // Affichage du terrain avec robot
-            break;
-        }
-        default: {
-            cout << "Choix invalide, affichage par défaut : tableau simple.\n";
-            affichageSimple aff;  // Affichage simple par défaut
-            aff.affiche(std::cout, t, *this);  // Affichage du terrain avec robot
-            break;
-        }
-    }
-     std::this_thread::sleep_for(std::chrono::seconds(80));
-}
-
 
 bool robot::tournerEtAvancerAGauchePossible() {
     char ancienneDirection = d_direction;
-    tournerAGauche();  // On tourne à gauche
-    bool possible = !detecterObstacle();  // Si on peut avancer après avoir tourné à gauche, c'est possible
-    d_direction = ancienneDirection;  // Restauration de la direction initiale
+    tournerAGauche();
+    bool possible = !detecterObstacle();
+    d_direction = ancienneDirection;
     return possible;
 }
 
-void robot::algorithmDeMainDroite() {
+/*void robot::algorithmDeMainDroite(affichage& aff) {
     int casesParcourues = 0;
     while (true) {
         tournerADroite();
+        system("cls");
+        aff.affiche(std::cout,t, *this);
         if (!detecterObstacle()) {
             avanceUneCase();
+            system("cls");
+            aff.affiche(std::cout,t, *this);
         } else {
             tournerAGauche();
             if (!detecterObstacle()) {
                 avanceUneCase();
+                system("cls");
+                aff.affiche(std::cout,t, *this);
             } else {
                 tournerAGauche();
+                system("cls");
+                aff.affiche(std::cout,t, *this);
             }
         }
         casesParcourues++;
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-
         if (positionXY() == terain().caseArrivee()) {
             std::cout << "Le robot a atteint la sortie !" << "\nNombre de cases parcourues : " << casesParcourues << std::endl;
             break;
         }
+
+    }
+    system("cls");
+    aff.affiche(std::cout,t, *this);
+}*/
+
+void robot::algorithmDeMainDroite(affichage& aff) {
+    while (true) {
+        std::cout << "Tourner à droite..." << std::endl;
+        tournerADroite();
+
+        if (!detecterObstacle()) {
+            std::cout << "Pas d'obstacle, avancer..." << std::endl;
+            avanceUneCase();
+        } else {
+            std::cout << "Obstacle détecté, tourner à gauche..." << std::endl;
+            tournerAGauche();
+
+            if (detecterObstacle()) {
+                std::cout << "Deuxième obstacle détecté, tourner à gauche à nouveau..." << std::endl;
+                tournerAGauche();
+            } else {
+                std::cout << "Pas d'obstacle, avancer..." << std::endl;
+                avanceUneCase();
+            }
+        }
+
+
+        // Condition de sortie (par exemple, si le robot atteint la case d'arrivée)
+        if (positionXY() == terain().caseArrivee()) {
+            std::cout << "Le robot a atteint la destination." << std::endl;
+            break;
+        }
+        system("cls");
+        aff.affiche(std::cout,t, *this);
+        std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Pause pour rendre l'affichage visible
     }
 }
 
 
-void robot::algorithmeDePledge() {
+
+void robot::algorithmeDePledge(affichage& aff) {
     int compteurPledge = 0;
     int casesParcourues = 0;
 
@@ -174,9 +177,8 @@ void robot::algorithmeDePledge() {
         }
 
         casesParcourues++;
-
-        afficherTerrainAvecRobot();
-
+        system("cls");
+        aff.affiche(std::cout,t, *this);
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
 

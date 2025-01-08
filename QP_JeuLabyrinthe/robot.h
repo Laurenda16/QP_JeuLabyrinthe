@@ -20,10 +20,9 @@ public:
     void notifierObservation();
     void enregistrerObservateur(const observateurRobot& ob);
     void affiche(std::ostream& ost, const robot& r) const ;
-    void afficherTerrainAvecRobot();
     bool tournerEtAvancerAGauchePossible();
-    void algorithmDeMainDroite();
-    void algorithmeDePledge();
+    void algorithmDeMainDroite(affichage& aff);
+    void algorithmeDePledge(affichage& aff);
 private:
     position d_pos;
     char d_direction;  // N, E, S, W
