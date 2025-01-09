@@ -11,8 +11,8 @@ public:
     robot(const terrain& t);
     position positionXY() const;
     char direction() const;
-    int nombreDeplacement() const;
     terrain terain() const;
+    std::vector<observateurRobot> observateurs() const;
     void avanceUneCase();
     void tournerAGauche();
     void tournerADroite();
@@ -28,8 +28,7 @@ private:
     char d_direction;  // N, E, S, W
     const terrain& t;
     std::vector<observateurRobot> d_observateurs;
-    int d_nombreDeplacement;
 
 };
-#endif // ROBOT_H
+#endif
 

@@ -204,6 +204,6 @@ TEST_CASE("La methode definit Case Arrivee est correcte")
 int main(int argc, char** argv) {
     doctest::Context context;
     int res = context.run();
-    system("pause");  // Pause pour garder la fenetre ouverte sur Windows
+    system("pause");
     return res;
 }

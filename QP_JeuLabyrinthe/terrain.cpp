@@ -51,11 +51,11 @@ void terrain::modifieCase(const position& Case, TypeCase type)
   d_tableau[Case.ligne][Case.colonne] = type;
   if(type == TypeCase::DEPART)
   {
-    d_caseDepart =Case ;// {Case.ligne, Case.colonne};
+    d_caseDepart =Case ;
   }
   if(type == TypeCase::ARRIVEE)
   {
-    d_caseArrivee = Case ;//{Case.ligne, Case.colonne};
+    d_caseArrivee = Case ;
   }
 }
 void terrain::definitCaseDepart(position& Depart)
@@ -102,7 +102,6 @@ void terrain::litDepuis(const std::string& nomFichier)
 
     while (std::getline(fichier, ligne)) {
         std::vector<TypeCase> ligneTerrain;
-        // Vérifier si la longueur de la ligne est cohérente
         if (largeurLigne == -1) {
             largeurLigne = ligne.size();
         } else if (ligne.size() != largeurLigne) {
@@ -139,12 +138,9 @@ void terrain::litDepuis(const std::string& nomFichier)
         ++ligneIndex;
     }
 
-    // Vérifier si départ et arrivée sont bien définis
     if (nouvelleCaseDepart.ligne == -1 || nouvelleCaseArrivee.ligne == -1) {
         throw std::runtime_error("Départ ou arrivée non définie.");
     }
-
-    // Appliquer les données au terrain
     d_tableau = std::move(nouveauTableau);
     d_caseDepart = nouvelleCaseDepart;
     d_caseArrivee = nouvelleCaseArrivee;

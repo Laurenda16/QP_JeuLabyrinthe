@@ -20,9 +20,9 @@ public:
 class observateurRobot : public observateur
 {
 public:
-   string message(robot& r) const override;
+    string message(robot& r) const override;
     void notifie(robot& r) const override;
 
 };
 
-#endif // OBSERVATEURROBOT_H
+#endif

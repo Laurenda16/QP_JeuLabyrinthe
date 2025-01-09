@@ -38,35 +38,20 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="affichage.h" />
+		<Unit filename="affiche.h" />
 		<Unit filename="doctest.h">
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="main.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="observateurRobot.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="observateurRobot.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="robot.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="robot.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
+		<Unit filename="include/observateurRobot.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="observateurRobot.cpp" />
+		<Unit filename="observateurRobot.h" />
+		<Unit filename="robot.cpp" />
+		<Unit filename="robot.h" />
 		<Unit filename="terrain.cpp" />
-		<Unit filename="terrain.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
+		<Unit filename="terrain.h" />
 		<Unit filename="testObservateurRobot.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
@@ -75,7 +60,10 @@
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="testTerrain.cpp" />
+		<Unit filename="testTerrain.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="testmain.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
