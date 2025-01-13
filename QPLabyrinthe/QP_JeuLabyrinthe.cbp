@@ -33,52 +33,51 @@
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
 			</Target>
+			<Target title="testRobot.cpp">
+				<Option output="QP_JeuLabyrinthe" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="doctest.h">
+		<Unit filename="affichage.h" />
+		<Unit filename="affiche.h">
 			<Option target="Debug" />
 			<Option target="Release" />
+			<Option target="testmain" />
+		</Unit>
+		<Unit filename="doctest.h" />
+		<Unit filename="include/observateurRobot.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="testmain" />
 		</Unit>
 		<Unit filename="main.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="observateurRobot.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="observateurRobot.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="robot.cpp">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="robot.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
+		<Unit filename="observateurRobot.cpp" />
+		<Unit filename="observateurRobot.h" />
+		<Unit filename="robot.cpp" />
+		<Unit filename="robot.h" />
 		<Unit filename="terrain.cpp" />
-		<Unit filename="terrain.h">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</Unit>
+		<Unit filename="terrain.h" />
 		<Unit filename="testObservateurRobot.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="testRobot.cpp">
+		<Unit filename="testRobot.cpp" />
+		<Unit filename="testTerrain.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="testTerrain.cpp" />
 		<Unit filename="testmain.cpp">
 			<Option target="Debug" />
 			<Option target="Release" />
+			<Option target="testmain" />
 		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1" />

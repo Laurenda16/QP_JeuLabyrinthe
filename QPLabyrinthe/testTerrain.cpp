@@ -1,4 +1,4 @@
-#define DOCTEST_CONFIG_IMPLEMENT
+//#define DOCTEST_CONFIG_IMPLEMENT
 #include "doctest.h"
 #include"terrain.h"
 void verifierDimensionsInvalides(terrain& tr) {
@@ -200,10 +200,4 @@ TEST_CASE("La methode definit Case Arrivee est correcte")
     tr.modifieCase(nouvelleArrivee, TypeCase::MUR);
     REQUIRE_FALSE(tr.caseArrivee()==nouvelleArrivee);
   }
-}
-int main(int argc, char** argv) {
-    doctest::Context context;
-    int res = context.run();
-    system("pause");  // Pause pour garder la fenetre ouverte sur Windows
-    return res;
 }
